@@ -1,18 +1,49 @@
 import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createDrawerNavigator } from 'react-navigation-drawer'
+import { createAppContainer } from 'react-navigation';
+
+import Main from './pages/Main'
+import Push from './pages/Push'
+import Modal from './pages/Modal'
+
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
 
-export type State = {
+const MainNavigation = createDrawerNavigator(
+  {
+    Main: { screen: Main },
+    Push: { screen: Push },
+  },
+  {initialRouteName: 'Main'}
+)
+
+const NestNavigation = createStackNavigator(
+  {
+    MainNavigation: { screen: MainNavigation },
+    Modal: { screen: Modal },
+  },
+  {initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none'},
+)
+
+const AppContainer = createAppContainer(NestNavigation);
+
+type Props = {};
+
+type State = {
   isReady: boolean
 }
 
-export default class App extends React.Component<State> {
+type  AppState = State & Props
+
+export default class App extends React.Component<AppState> {
   constructor(props) {
     super(props);
     this.state = {
-      isReady: false,
+      isReady: false
     };
   }
 
@@ -26,14 +57,17 @@ export default class App extends React.Component<State> {
   }
 
   render() {
-    if (!this.state.isReady){
+    const { isReady } = this.state
+    if (!isReady){
       return <AppLoading />;
     }
 
     return (
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      <AppContainer 
+        ref={nav => {
+         this.navigator = nav;
+       }}
+      />
     );
   }
 }
