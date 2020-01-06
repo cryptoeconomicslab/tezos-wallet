@@ -8,7 +8,8 @@ import {
   Right, 
   Button, 
   Title, 
-  Text
+  Text,
+  Icon
   } from 'native-base';
 
 type Props = {};
@@ -21,11 +22,21 @@ export default class Main extends Component<Props> {
     const { navigation } = this.props
     navigation.navigate('Modal')
   }
+
+  menu = () => {
+    const { navigation } = this.props
+    navigation.openDrawer()
+  }
+
   render() {
     return (
       <Container>
         <Header>
-          <Left />
+          <Left >
+            <Button transparent onPress={this.menu}>
+              <Icon name='menu'/>
+            </Button>
+          </Left>
           <Body>
             <Title>メイン</Title>
           </Body>
