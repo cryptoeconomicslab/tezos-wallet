@@ -3,7 +3,10 @@ import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
-import { AppContainer } from './Navigation'
+
+import { Provider } from 'react-redux';
+import { store } from './redux/makeStore'
+import { AppWithNavigationState } from './Navigation'
 
 type Props = {};
 
@@ -16,6 +19,8 @@ type  AppState = State & Props
 export default class App extends React.Component<AppState> {
   constructor(props) {
     super(props);
+
+    // @TODO move reducer
     this.state = {
       isReady: false
     };
@@ -37,11 +42,9 @@ export default class App extends React.Component<AppState> {
     }
 
     return (
-      <AppContainer 
-          ref={nav => {
-            this.navigator = nav;
-          }}
-        />
+      <Provider store={ store }>
+        <AppWithNavigationState />
+      </Provider>
     );
   }
 }

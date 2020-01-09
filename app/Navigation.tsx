@@ -1,6 +1,7 @@
+import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation-stack'
 import { createDrawerNavigator } from 'react-navigation-drawer'
-import { createAppContainer } from 'react-navigation';
+import { createReduxContainer } from 'react-navigation-redux-helpers';
 
 import Main from './pages/Main'
 import Push from './pages/Push'
@@ -14,7 +15,7 @@ const MainNavigation = createDrawerNavigator(
   {initialRouteName: 'Main'}
 )
 
-const NestNavigation = createStackNavigator(
+export const NestNavigation = createStackNavigator(
   {
     MainNavigation: { screen: MainNavigation },
     Modal: { screen: Modal },
@@ -22,4 +23,8 @@ const NestNavigation = createStackNavigator(
   {initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none'},
 )
 
-export const AppContainer = createAppContainer(NestNavigation);
+const AppContainer = createReduxContainer(NestNavigation);
+
+export const AppWithNavigationState = connect((state) => ({
+  state: state.nav
+}))(AppContainer);
