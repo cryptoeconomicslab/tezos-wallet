@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import { StyleSheet } from 'react-native'
 import { 
   Container,
   View,
@@ -9,11 +10,16 @@ import {
   Button, 
   Title, 
   Text,
-  Icon
-  } from 'native-base';
+  Icon,
+  StyleProvider,
+  connectStyle
+  } from 'native-base'
+import getTheme from '../native-base-theme/components'
+import headerTheme from '../native-base-theme/components'
+import commonColor from '../native-base-theme/variables/commonColor';
 
-type Props = {};
-export default class Main extends Component<Props> {
+type Props = {}
+class Main extends Component<Props> {
   push = () => {
     const { navigation } = this.props
     navigation.navigate('Push')
@@ -28,10 +34,14 @@ export default class Main extends Component<Props> {
     navigation.openDrawer()
   }
 
+  static navigationOptions = {
+      title: 'hogehoge'
+  }
+
   render() {
     return (
       <Container>
-        <Header>
+        <Header style={styles.header}>
           <Left >
             <Button transparent onPress={this.menu}>
               <Icon name='menu'/>
@@ -42,12 +52,12 @@ export default class Main extends Component<Props> {
           </Body>
           <Right />
         </Header>
-        <Container>
-         <Button iconRight primary onPress={this.push}>
+        <Container style={styles.bg}>
+        <Button iconRight primary onPress={this.push} style={styles.button}>
             <Text>プッシュ表示</Text>
           </Button>
         <View>
-          <Button iconRight primary onPress={this.modal}>
+          <Button iconRight primary onPress={this.modal} style={styles.button}>
             <Text>モーダル表示</Text>
           </Button>
         </View>
@@ -56,3 +66,17 @@ export default class Main extends Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#312934'
+  },
+  button: {
+    backgroundColor: '#312934'
+  },
+  bg: {
+    backgroundColor: '#312934'
+  }
+})
+
+export default connectStyle('NativeBase', styles)(Main)
