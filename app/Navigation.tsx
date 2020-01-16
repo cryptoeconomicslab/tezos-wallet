@@ -16,8 +16,7 @@ const MainNavigation = createDrawerNavigator(
     Main: { 
       screen: Main,
       navigationOptions: {
-        title: 'Home',
-        drawerIcon: <Icon size={24} name="home"/>,
+        title: 'Home'
       }
     },
     Push: { screen: Push },

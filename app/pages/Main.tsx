@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Image, ImageBackground, TouchableHighlight } from 'react-native'
 import { 
   Container,
   View,
@@ -13,6 +13,7 @@ import {
   Icon,
   StyleProvider,
   connectStyle
+
   } from 'native-base'
 import getTheme from '../native-base-theme/components'
 import headerTheme from '../native-base-theme/components'
@@ -48,19 +49,34 @@ class Main extends Component<Props> {
             </Button>
           </Left>
           <Body>
-            <Title>メイン</Title>
+            <Title style={styles.header_title}>Tezos Plasma Wallet</Title>
           </Body>
           <Right />
         </Header>
         <Container style={styles.bg}>
-        <Button iconRight primary onPress={this.push} style={styles.button}>
-            <Text>プッシュ表示</Text>
-          </Button>
-        <View>
-          <Button iconRight primary onPress={this.modal} style={styles.button}>
-            <Text>モーダル表示</Text>
-          </Button>
-        </View>
+        
+        <TouchableHighlight onPress={this.push}>
+          <ImageBackground 
+            source={require('../assets/card_public_chain.png')} 
+            style={styles.public_card}
+          >
+            <Text>XTZ - public chain</Text>
+            <Text>12.5</Text>
+            <Text>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
+          </ImageBackground>
+        </TouchableHighlight>
+
+      <TouchableHighlight onPress={this.modal}>
+        <ImageBackground 
+          source={require('../assets/card_child_chain.png')} 
+          style={styles.public_card}
+        >
+          <Text>XTZ - child chain</Text>
+          <Text>12.5</Text>
+          <Text>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
+        </ImageBackground>
+      </TouchableHighlight>
+        
         </Container>
       </Container>
     );
@@ -71,11 +87,19 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#312934'
   },
+  header_title: {
+    fontSize: 16,
+    textAlign: 'center'
+  },
   button: {
     backgroundColor: '#312934'
   },
   bg: {
     backgroundColor: '#312934'
+  },
+  public_card: {
+    width: 364,
+    height: 200
   }
 })
 
