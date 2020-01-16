@@ -58,22 +58,22 @@ class Main extends Component<Props> {
         <TouchableHighlight onPress={this.push}>
           <ImageBackground 
             source={require('../assets/card_public_chain.png')} 
-            style={styles.public_card}
+            style={styles.card}
           >
-            <Text>XTZ - public chain</Text>
-            <Text>12.5</Text>
-            <Text>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
+            <Text style={styles.card_title}>XTZ - public chain</Text>
+            <Text style={styles.card_point}>12.5</Text>
+            <Text style={styles.card_text}>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
           </ImageBackground>
         </TouchableHighlight>
 
       <TouchableHighlight onPress={this.modal}>
         <ImageBackground 
           source={require('../assets/card_child_chain.png')} 
-          style={styles.public_card}
+          style={styles.card}
         >
-          <Text>XTZ - child chain</Text>
-          <Text>12.5</Text>
-          <Text>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
+          <Text style={styles.card_title}>XTZ - child chain</Text>
+          <Text style={styles.card_point}>12.5</Text>
+          <Text style={styles.card_text}>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
         </ImageBackground>
       </TouchableHighlight>
         
@@ -89,15 +89,36 @@ const styles = StyleSheet.create({
   },
   header_title: {
     fontSize: 16,
-    textAlign: 'center'
+    textAlign: 'center'    
+  },
+  card_title: {
+    color: 'rgba(255, 255, 255 ,0.5)',
+    fontSize: 20,
+  },
+  card_point: {
+    color: 'rgba(255, 255, 255 ,0.5)',
+    fontSize: 70,
+    textAlign: 'right'
+  },
+  card_text: {
+    color: 'rgba(255, 255, 255 ,0.5)',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 32
   },
   button: {
     backgroundColor: '#312934'
   },
   bg: {
-    backgroundColor: '#312934'
+    backgroundColor: '#312934',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
-  public_card: {
+  card: {
+    margin: 8,
+    padding: 8,
     width: 364,
     height: 200
   }

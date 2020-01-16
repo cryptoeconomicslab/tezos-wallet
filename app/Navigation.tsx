@@ -10,13 +10,34 @@ import {
 import Main from './pages/Main'
 import Push from './pages/Push'
 import Modal from './pages/Modal'
+import NetworkSelect from './pages/NetworkSelect'
+import ChallengeList from './pages/ChallengeList'
+import AddressList from './pages/AddressList'
 
 const MainNavigation = createDrawerNavigator(
   {
     Main: { 
       screen: Main,
       navigationOptions: {
-        title: 'Home'
+        title: 'Wallet list'
+      }
+    },
+    ChallengeList: { 
+      screen: ChallengeList,
+      navigationOptions: {
+        title: 'Challenge list'
+      }
+    },
+    Network: {
+      screen: NetworkSelect,
+      navigationOptions: {
+        title: 'Network'
+      }
+    },
+    AddressList: { 
+      screen: AddressList,
+      navigationOptions: {
+        title: 'Address list'
       }
     },
     Push: { screen: Push },

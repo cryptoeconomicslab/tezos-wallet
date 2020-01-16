@@ -15,7 +15,7 @@ import {
    } from 'native-base';
 
 type Props = {};
-export default class Push extends Component<Props> {
+export default class NetworkSelect extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ export default class Push extends Component<Props> {
 
   componentDidMount(){
     this.setState({
-      selected2: 'public'
+      selected2: 'babylonnet'
     });
   }
 
@@ -45,7 +45,7 @@ export default class Push extends Component<Props> {
             </Button>
           </Left>
           <Body>
-            <Title>Public Chain</Title>
+            <Title>Network</Title>
           </Body>
           <Right />
         </Header>
@@ -62,8 +62,8 @@ export default class Push extends Component<Props> {
                 selectedValue={this.state.selected2}
                 onValueChange={this.onValueChange2.bind(this)}
               >
-                <Picker.Item label="public chain" value="public" />
-                <Picker.Item label="child chain" value="child" />
+                <Picker.Item label="Alphanet" value="alphanet" />
+                <Picker.Item label="Babylonnet" value="babylonnet" />
               </Picker>
             </Item>
           </Form>
