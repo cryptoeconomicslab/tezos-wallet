@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import StackHeader from '../components/StackHeader'
 import { 
   Container,
   Header,
@@ -36,19 +37,14 @@ export default class Push extends Component<Props> {
   }
 
   render() {
+    const { navigation } = this.props
+
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Public Chain</Title>
-          </Body>
-          <Right />
-        </Header>
+        <StackHeader 
+          title={'push'}
+          navigation={navigation}
+        />
         <Content>
           <Form>
             <Item picker>

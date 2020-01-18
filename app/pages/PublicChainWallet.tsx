@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import StackHeader from '../components/StackHeader'
+import { DrawerActions } from 'react-navigation-drawer'
+import RootHeader from '../components/RootHeader'
 import { 
   Container,
   Icon,
@@ -9,8 +10,11 @@ import {
   Content,
    } from 'native-base';
 
-type Props = {};
-export default class NetworkSelect extends Component<Props> {
+type Props = {
+  selected2: string
+};
+
+class PublicChainWallet extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +24,7 @@ export default class NetworkSelect extends Component<Props> {
 
   componentDidMount(){
     this.setState({
-      selected2: 'babylonnet'
+      selected2: 'public'
     });
   }
 
@@ -31,12 +35,13 @@ export default class NetworkSelect extends Component<Props> {
   }
 
   render() {
-      const { navigation } = this.props  
+    const { navigation } = this.props
+    
     return (
-      <Container>    
-        <StackHeader 
-          title={'Network'}
+      <Container>
+        <RootHeader
           navigation={navigation}
+          title={'Public Chain'}
         />
         <Container>
           <Content>
@@ -52,8 +57,8 @@ export default class NetworkSelect extends Component<Props> {
                   selectedValue={this.state.selected2}
                   onValueChange={this.onValueChange2.bind(this)}
                 >
-                  <Picker.Item label="Alphanet" value="alphanet" />
-                  <Picker.Item label="Babylonnet" value="babylonnet" />
+                  <Picker.Item label="public chain" value="public" />
+                  <Picker.Item label="child chain" value="child" />
                 </Picker>
               </Item>
             </Form>
@@ -63,3 +68,5 @@ export default class NetworkSelect extends Component<Props> {
     );
   }
 }
+
+export default PublicChainWallet

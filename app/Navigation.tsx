@@ -13,6 +13,7 @@ import Modal from './pages/Modal'
 import NetworkSelect from './pages/NetworkSelect'
 import ChallengeList from './pages/ChallengeList'
 import AddressList from './pages/AddressList'
+import PublicChainWallet from './pages/PublicChainWallet'
 
 const MainNavigation = createDrawerNavigator(
   {
@@ -20,6 +21,12 @@ const MainNavigation = createDrawerNavigator(
       screen: Main,
       navigationOptions: {
         title: 'Wallet list'
+      }
+    },
+    PublicChainWallet: { 
+      screen: PublicChainWallet,
+      navigationOptions: {
+        title: 'PublicChain'
       }
     },
     ChallengeList: { 
@@ -49,12 +56,49 @@ const MainNavigation = createDrawerNavigator(
   }
 )
 
+const PublicChainWalletNavigation = createDrawerNavigator(
+  {
+    PublicChainWallet: { 
+      screen: PublicChainWallet,
+      navigationOptions: {
+        title: 'PublicChain'
+      }
+    },
+    ChallengeList: { 
+      screen: ChallengeList,
+      navigationOptions: {
+        title: 'Challenge list'
+      }
+    },
+    Network: {
+      screen: NetworkSelect,
+      navigationOptions: {
+        title: 'Network'
+      }
+    },
+    AddressList: { 
+      screen: AddressList,
+      navigationOptions: {
+        title: 'Address list'
+      }
+    },
+    Push: { screen: Push },
+  },
+  {
+    initialRouteName: 'PublicChainWallet',
+    drawerBackgroundColor: '#312934',
+    drawerType: 'front'
+  }
+)
+
 export const NestNavigation = createStackNavigator(
   {
     MainNavigation: { screen: MainNavigation },
     Modal: { screen: Modal },
+    PublicChainWallet: { screen: PublicChainWalletNavigation }
   },
   {initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none'},
+  
 )
 
 const AppContainer = createReduxContainer(NestNavigation);

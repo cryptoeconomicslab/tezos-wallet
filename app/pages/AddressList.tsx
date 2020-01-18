@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import StackHeader from '../components/StackHeader'
 import { 
   Container,
   Header,
@@ -13,19 +14,13 @@ import {
 type Props = {};
 export default class AddressList extends Component<Props> {
   render() {
+    const { navigation } = this.props
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Address List</Title>
-          </Body>
-          <Right />
-        </Header>
+        <StackHeader 
+          title={'AddressList'}
+          navigation={navigation}
+        />
       </Container>
     );
   }
