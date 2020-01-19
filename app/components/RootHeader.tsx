@@ -11,7 +11,12 @@ import {
   connectStyle
   } from 'native-base'
 
-class RootHeader extends Component {
+type Props = {
+  title: string
+  navigation: any
+}
+
+class RootHeader extends Component<Props> {
   menu = () => {
     const { navigation } = this.props
     navigation.openDrawer()

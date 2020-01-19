@@ -6,16 +6,24 @@ import {
   connectStyle
   } from 'native-base'
 import RootHeader from '../components/RootHeader'
-import getTheme from '../native-base-theme/components'
-import headerTheme from '../native-base-theme/components'
-import commonColor from '../native-base-theme/variables/commonColor';
+import WalletCard from '../components/WalletCard'
 
-type Props = {}
+type Props = {
+  title: string
+  navigation: any
+}
+
 class Main extends Component<Props> {
-  push = () => {
+  rootchain = () => {
     const { navigation } = this.props
     navigation.navigate('PublicChainWallet')
   }
+
+  childchain = () => {
+    const { navigation } = this.props
+    navigation.navigate('ChildchainWallet')
+  }
+
   modal = () => {
     const { navigation } = this.props
     navigation.navigate('PublicChainWallet')
@@ -30,29 +38,21 @@ class Main extends Component<Props> {
           navigation={navigation}
           title={'Tezos Plasma Wallet'} 
         />
-
         <Container style={styles.bg}>
-          <TouchableHighlight onPress={this.push}>
-            <ImageBackground 
-              source={require('../assets/card_public_chain.png')} 
-              style={styles.card}
-            >
-              <Text style={styles.card_title}>XTZ - public chain</Text>
-              <Text style={styles.card_point}>12.5</Text>
-              <Text style={styles.card_address}>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
-            </ImageBackground>
-          </TouchableHighlight>
-
-          <TouchableHighlight onPress={this.modal}>
-            <ImageBackground 
-              source={require('../assets/card_child_chain.png')} 
-              style={styles.card}
-            >
-              <Text style={styles.card_title}>XTZ - child chain</Text>
-              <Text style={styles.card_point}>12.5</Text>
-              <Text style={styles.card_address}>0x627306090abab3a6e1400e9345bc60c78a8bef57</Text>
-            </ImageBackground>
-          </TouchableHighlight>
+          <WalletCard
+            assets={require('../assets/card_public_chain.png')}
+            title={'XTZ - public chain'}
+            amount={12.5}
+            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            action={this.rootchain}
+          />
+          <WalletCard
+            assets={require('../assets/card_child_chain.png')}
+            title={'XTZ - child chain'}
+            amount={12.5}
+            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            action={this.childchain}
+          />
         </Container>
       </Container>
     );
@@ -60,21 +60,6 @@ class Main extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  card_title: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 20,
-  },
-  card_point: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 70,
-    textAlign: 'right'
-  },
-  card_address: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 14,
-    textAlign: 'center',
-    marginTop: 32
-  },
   button: {
     backgroundColor: '#312934'
   },
@@ -84,12 +69,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
-  },
-  card: {
-    margin: 8,
-    padding: 8,
-    width: 364,
-    height: 200
   }
 })
 

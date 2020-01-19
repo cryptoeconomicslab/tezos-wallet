@@ -11,7 +11,12 @@ import {
   connectStyle
   } from 'native-base'
 
-class StackHeader extends Component {
+type Props = {
+  title: string
+  navigation: any
+}
+
+class StackHeader extends Component<Props> {
   goBack = () => {
     const { navigation } = this.props
     navigation.goBack()

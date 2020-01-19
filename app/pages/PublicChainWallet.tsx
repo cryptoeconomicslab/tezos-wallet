@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { DrawerActions } from 'react-navigation-drawer'
+import React, {Component} from 'react'
 import RootHeader from '../components/RootHeader'
 import { 
   Container,
