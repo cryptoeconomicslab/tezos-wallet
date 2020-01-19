@@ -9,8 +9,15 @@ import {
   Content,
    } from 'native-base';
 
-type Props = {};
-export default class NetworkSelect extends Component<Props> {
+type Props = {
+  navigation: any
+}
+
+type State = {
+  selected2: string
+}
+
+export default class NetworkSelect extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

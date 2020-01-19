@@ -4,10 +4,14 @@ import {
   Container
    } from 'native-base';
 
-type Props = {};
+type Props = {
+  navigation: any
+};
+
 export default class ChallengeList extends Component<Props> {
   render() {
     const { navigation } = this.props
+    
     return (
       <Container>
         <StackHeader 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { 
   Container,
-  Text,
   connectStyle
   } from 'native-base'
+  
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 
@@ -22,11 +22,6 @@ class Main extends Component<Props> {
   childchain = () => {
     const { navigation } = this.props
     navigation.navigate('ChildchainWallet')
-  }
-
-  modal = () => {
-    const { navigation } = this.props
-    navigation.navigate('PublicChainWallet')
   }
 
   render() {
@@ -60,9 +55,6 @@ class Main extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#312934'
-  },
   bg: {
     backgroundColor: '#312934',
     display: 'flex',

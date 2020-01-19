@@ -11,7 +11,10 @@ import {
   Title,
    } from 'native-base';
 
-type Props = {};
+type Props = {
+  navigation: any
+};
+
 export default class AddressList extends Component<Props> {
   render() {
     const { navigation } = this.props
