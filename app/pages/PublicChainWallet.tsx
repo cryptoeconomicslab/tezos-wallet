@@ -40,6 +40,7 @@ class PublicChainWallet extends Component<Props, State> {
             action={this.rootchain}
           />
           <ImageButton
+            navigation={navigation}
           />
         </Container>
       </Container>

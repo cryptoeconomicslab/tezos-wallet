@@ -16,6 +16,11 @@ type Props = {
 }
 
 class ImageButton extends Component<Props> {
+  depositForm = () => {
+    const { navigation } = this.props
+    navigation.navigate('DepositForm')
+  } 
+
   render() {
     const { 
       navigation, 
@@ -26,7 +31,7 @@ class ImageButton extends Component<Props> {
       action } = this.props
     
     return (
-      <TouchableHighlight onPress={action}>
+      <TouchableHighlight onPress={this.depositForm}>
         <ImageBackground 
           source={require('../assets/Button-bg-Deposit.png')} 
           style={styles.button}
