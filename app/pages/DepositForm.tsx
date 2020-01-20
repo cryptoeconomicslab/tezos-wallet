@@ -4,9 +4,11 @@ import StackHeader from '../components/StackHeader'
 import { 
   Container,
   Icon,
+  Text,
   Form,
   Item,
-  Picker,
+  Label,
+  Input,
   Content,
   connectStyle
    } from 'native-base';
@@ -16,10 +18,21 @@ type Props = {
 }
 
 type State = {
-  selected2: string
+  term: string
 }
 
 class DepositForm extends Component<Props, State> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      term: ''
+    }
+  }
+
+  onChange = (val: string) =>  {
+    this.setState({term: val})
+  }
+
   render() {
     const { navigation } = this.props  
     return (
@@ -28,26 +41,21 @@ class DepositForm extends Component<Props, State> {
           title={'Deposit'}
           navigation={navigation}
         />
-        <Container>
-          {/* <Content>
+        <Container style={{backgroundColor: '#312934'}}>
+          <Content>
             <Form>
-              <Item picker>
-                <Picker
-                  mode="dropdown"
-                  iosIcon={<Icon name="arrow-down" />}
-                  style={{ width: undefined }}
-                  placeholder="public chain"
-                  placeholderStyle={{ color: "#bfc6ea" }}
-                  placeholderIconColor="#007aff"
-                  selectedValue={this.state.selected2}
-                  onValueChange={this.onValueChange2.bind(this)}
-                >
-                  <Picker.Item label="Alphanet" value="alphanet" />
-                  <Picker.Item label="Babylonnet" value="babylonnet" />
-                </Picker>
+              <Item stackedLabel last>
+                <Label style={{color: '#FFFFFF'}}>Amount</Label>
+                <Input
+                  keyboardType="numeric"
+                  style={{color: '#FFFFFF'}}
+                  value={this.state.term}
+                  onChangeText={(val) => this.onChange(val)}
+                />
               </Item>
             </Form>
-          </Content> */}
+            <Text>{this.state.term}</Text>
+          </Content>
         </Container>
       </Container>
     );
