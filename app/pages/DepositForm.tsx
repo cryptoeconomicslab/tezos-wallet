@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Image } from 'react-native'
 import StackHeader from '../components/StackHeader'
 import { 
   Container,
   Icon,
+  Button,
   Text,
   Form,
   Item,
   Label,
   Input,
   Content,
-  connectStyle
+  CardItem,
+  Card,
+  Right,
+  connectStyle,
    } from 'native-base';
 
 type Props = {
@@ -42,6 +46,15 @@ class DepositForm extends Component<Props, State> {
           navigation={navigation}
         />
         <Container style={{backgroundColor: '#312934'}}>
+          <Card transparent>
+            <CardItem style={{backgroundColor: '#312934'}}>
+              <Image source={require('../assets/icon_money.png')} style={{width: 24, height: 24}}/>
+              
+              <Right>
+                <Text style={{color: '#FFFFFF'}}>12.5 &nbsp;XTZ</Text>
+              </Right>
+            </CardItem>
+          </Card>
           <Content>
             <Form>
               <Item stackedLabel last>
@@ -54,8 +67,10 @@ class DepositForm extends Component<Props, State> {
                 />
               </Item>
             </Form>
-            <Text>{this.state.term}</Text>
+            <Text style={{color: '#FFFFFF'}}>{12.5 - Number(this.state.term)}</Text>
           </Content>
+          
+          <Button dark ><Text>Deposit</Text></Button>
         </Container>
       </Container>
     );
