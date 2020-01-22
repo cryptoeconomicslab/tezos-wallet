@@ -33,11 +33,11 @@ class ImageButton extends Component<Props> {
     return (
       <TouchableHighlight onPress={this.depositForm}>
         <ImageBackground 
-          source={require('../assets/Button-bg-Deposit.png')} 
+          source={require('../assets/button_bg_deposit.png')} 
           style={styles.button}
         >
           <ImageBackground 
-            source={require('../assets/Transaction-receive.png')} 
+            source={require('../assets/transaction_receive.png')} 
             style={styles.buttonIcon}
           ></ImageBackground>
           <Text style={styles.label}>Deposit</Text>

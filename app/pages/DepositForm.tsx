@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet, Image, ImageBackground, TouchableHighlight, Alert } from 'react-native'
 import StackHeader from '../components/StackHeader'
 import { 
   Container,
@@ -37,6 +37,29 @@ class DepositForm extends Component<Props, State> {
     this.setState({term: val})
   }
 
+  onSubmit = () => {
+    const { term } = this.state
+    console.log(term)
+
+    Alert.alert(
+      'Are you sure to deposit',
+      `${term} XTZ`,
+      [
+        {
+          text: 'CANCEL',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'COMFIRM',
+          style: 'default', 
+          onPress: () => console.log('OK Pressed')
+          },
+      ],
+      {cancelable: true},
+    );
+  }
+
   render() {
     const { navigation } = this.props  
     return (
@@ -68,9 +91,18 @@ class DepositForm extends Component<Props, State> {
               </Item>
             </Form>
             <Text style={{color: '#FFFFFF'}}>{12.5 - Number(this.state.term)}</Text>
+
+            <TouchableHighlight onPress={this.onSubmit}>
+              <ImageBackground 
+                source={require('../assets/button_bg_primary.png')} 
+                style={{width: 365, height: 63, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}
+              >
+                <Text style={{color: '#FFFFFF', textAlign: 'center', fontSize: 16}}>Deposit</Text>
+              </ImageBackground>
+            </TouchableHighlight>
           </Content>
           
-          <Button dark ><Text>Deposit</Text></Button>
+
         </Container>
       </Container>
     );
