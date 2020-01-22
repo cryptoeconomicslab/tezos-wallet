@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Image, ImageBackground, TouchableHighlight, Alert } from 'react-native'
+import { StyleSheet, Image, ImageBackground, TouchableHighlight, Alert, View } from 'react-native'
 import StackHeader from '../components/StackHeader'
 import { 
   Container,
@@ -79,7 +79,7 @@ class DepositForm extends Component<Props, State> {
             </CardItem>
           </Card>
           <Content>
-            <Form>
+            <Form style={{width: 120}}>
               <Item stackedLabel last>
                 <Label style={{color: '#FFFFFF'}}>Amount</Label>
                 <Input
@@ -88,14 +88,23 @@ class DepositForm extends Component<Props, State> {
                   value={this.state.term}
                   onChangeText={(val) => this.onChange(val)}
                 />
+                <Text style={{color: '#FFFFFF'}}>XTZ</Text>
               </Item>
+              
             </Form>
             <Text style={{color: '#FFFFFF'}}>{12.5 - Number(this.state.term)}</Text>
-
+            
+            <Text numberOfLines={1} style={{color: '#FFFFFF'}}>_________________________________________________</Text>
             <TouchableHighlight onPress={this.onSubmit}>
               <ImageBackground 
                 source={require('../assets/button_bg_primary.png')} 
-                style={{width: 365, height: 63, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}
+                style={{
+                  width: 365, 
+                  height: 63, 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  justifyContent: 'center'
+                }}
               >
                 <Text style={{color: '#FFFFFF', textAlign: 'center', fontSize: 16}}>Deposit</Text>
               </ImageBackground>
