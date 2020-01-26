@@ -57,7 +57,12 @@ const MainNavigation = createDrawerNavigator(
   {
     initialRouteName: 'Main',
     drawerBackgroundColor: '#312934',
-    drawerType: 'front'
+    drawerType: 'front',
+    contentOptions: {
+      inactiveLabelStyle: {
+        color: '#FFF'
+      }
+    }
   }
 )
 
@@ -107,7 +112,8 @@ const ChildchainWalletNavigation = createDrawerNavigator(
     PublicChainWallet: { 
       screen: PublicChainWallet,
       navigationOptions: {
-        title: 'PublicChain'
+        title: 'PublicChain',
+        textStyle: {color: '#FFF'}
       }
     },
     ChildchainWallet: { 
@@ -157,6 +163,8 @@ export const NestNavigation = createStackNavigator(
 
 const AppContainer = createReduxContainer(NestNavigation);
 
-export const AppWithNavigationState = connect((state) => ({
-  state: state.nav
-}))(AppContainer);
+export const AppWithNavigationState = connect(
+  (state) => ({
+    state: state.nav
+  })
+  )(AppContainer);

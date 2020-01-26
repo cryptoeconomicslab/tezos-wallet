@@ -12,8 +12,8 @@ const imageButtonHandler = (type) => {
       }
     case 'send':
       return {
-        bg: require('../assets/button_bg_primary.png'), 
-        icon: require('../assets/transaction_send.png')
+        bg: require('../assets/button_bg_transfer.png'), 
+        icon: require('../assets/transaction_transfer.png')
       }
     default: 
       return {

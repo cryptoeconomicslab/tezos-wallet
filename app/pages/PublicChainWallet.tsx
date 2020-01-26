@@ -22,7 +22,6 @@ type State = {
   showToast: boolean
 }
 
-
 class PublicChainWallet extends Component<Props, State> {
   rootchain = () => {
     const { navigation } = this.props
@@ -56,7 +55,7 @@ class PublicChainWallet extends Component<Props, State> {
             action={this.rootchain}
           />
           <ImageButton
-            title='Deposit'
+            title='Deposit XTZ'
             action={this.depositForm}
             type={'deposit'}
           />

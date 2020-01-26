@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
-import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
+import imageButtonHandler from '../constants/imageButtonHandler'
+import styleConstants from '../constants/styleConstants'
+
+import { 
+  StyleSheet,
+  ImageBackground, 
+  TouchableHighlight
+} from 'react-native'
+
 import { 
   Text,
   connectStyle
-  } from 'native-base'
-import imageButtonHandler from '../constants/imageButtonHandler'
-import styleConstants from '../constants/styleConstants'
+} from 'native-base'
 
 type Props = {
   title: string
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
     color: styleConstants.color.textWhite,
     fontSize: styleConstants.fontSize.large,
     fontWeight: styleConstants.fontWeight.bold,
-    marginLeft: 86,
+    marginLeft: 70,
     marginRight: 'auto'
   },
   buttonIcon:{

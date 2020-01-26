@@ -15,7 +15,7 @@ import {
   Left,
   connectStyle
    } from 'native-base';
-
+import Constants from 'expo-constants';
 import styleConstants from '../constants/styleConstants'
 
 type Props = {
@@ -62,14 +62,15 @@ class DepositForm extends Component<Props, State> {
   }
 
   render() {
-    const { navigation } = this.props  
+    const { navigation } = this.props
+    const { term } = this.state
     return (
-      <Container style={styles.bg}>    
+      <Container>    
         <StackHeader 
           title={'Deposit'}
           navigation={navigation}
         />
-
+        <Container style={styles.bg}>
         <Card transparent style={styles.card}>
           <CardItem style={styles.cardList}>
             <Image source={require('../assets/icon_money.png')} style={styles.icon}/>
@@ -77,7 +78,7 @@ class DepositForm extends Component<Props, State> {
               <Text style={styles.text}>Balance</Text>
             </Left>
             <Right>
-              <Text style={styles.text}>12.5 &nbsp;XTZ</Text>
+              <Text style={styles.text}>{Number(12.5 - term)} &nbsp;XTZ</Text>
             </Right>
           </CardItem>
         </Card>
@@ -112,6 +113,7 @@ class DepositForm extends Component<Props, State> {
             </ImageBackground>
           </TouchableHighlight>
         </Content>
+        </Container>
       </Container>
     );
   }
@@ -119,6 +121,7 @@ class DepositForm extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   bg: {
+    top: styleConstants.margin.base,
     backgroundColor: styleConstants.color.primaryBlack,
   },
   card:{
