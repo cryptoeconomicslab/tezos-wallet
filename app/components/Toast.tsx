@@ -8,19 +8,19 @@ const typeSwitcher = (type: string) => {
   switch(type) {
     case 'success':
       return (
-        successStyles.toast
+        styles.success
       )
     case 'warn':
       return (
-        warnStyles.toast
+        styles.warn
       )  
     case 'error':
       return (
-        errorStyles.toast
+        styles.error
       )
     default: 
       return (
-        styles.toast
+        styles.default
       )
   }
 }
@@ -38,7 +38,7 @@ const Toastr = {
 };
 
 const styles = StyleSheet.create({
-  toast: {
+  default: {
     backgroundColor: styleConstants.color.primary,
     borderRadius: 6,
     width: '94%',
@@ -48,11 +48,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
     elevation: 2,
-  }
-})
-
-const successStyles = StyleSheet.create({
-  toast: {
+  },
+  success: {
     backgroundColor: styleConstants.color.secondary,
     borderRadius: 6,
     width: '94%',
@@ -62,11 +59,8 @@ const successStyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
     elevation: 2,
-  }
-})
-
-const warnStyles = StyleSheet.create({
-  toast: {
+  },
+  warn: {
     backgroundColor: styleConstants.color.warn,
     borderRadius: 6,
     width: '94%',
@@ -76,11 +70,8 @@ const warnStyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
     elevation: 2,
-  }
-})
-
-const errorStyles = StyleSheet.create({
-  toast: {
+  },
+  error: {
     backgroundColor: styleConstants.color.error,
     bottom: 16,
     borderRadius: 6,
@@ -92,6 +83,5 @@ const errorStyles = StyleSheet.create({
     elevation: 2,
   }
 })
-
 
 export default connectStyle('NativeBase', styles)(Toastr)
