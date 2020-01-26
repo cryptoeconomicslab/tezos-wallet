@@ -3,8 +3,6 @@ import { StyleSheet, Image, ImageBackground, TouchableHighlight, Alert, View } f
 import StackHeader from '../components/StackHeader'
 import { 
   Container,
-  Icon,
-  Button,
   Text,
   Form,
   Item,
@@ -14,9 +12,11 @@ import {
   CardItem,
   Card,
   Right,
-  connectStyle,
+  Left,
+  connectStyle
    } from 'native-base';
-import Constants from 'expo-constants';
+
+import styleConstants from '../constants/styleConstants'
 
 type Props = {
   navigation: any
@@ -55,7 +55,7 @@ class DepositForm extends Component<Props, State> {
           text: 'COMFIRM',
           style: 'default', 
           onPress: () => console.log('OK Pressed')
-          },
+        },
       ],
       {cancelable: true},
     );
@@ -64,36 +64,37 @@ class DepositForm extends Component<Props, State> {
   render() {
     const { navigation } = this.props  
     return (
-      <Container style={{backgroundColor: '#312934'}}>    
+      <Container style={styles.bg}>    
         <StackHeader 
           title={'Deposit'}
           navigation={navigation}
         />
 
-        <Card transparent>
-          <CardItem style={{backgroundColor: '#312934'}}>
-            <Image source={require('../assets/icon_money.png')} style={{width: 24, height: 24}}/>
+        <Card transparent style={styles.card}>
+          <CardItem style={styles.cardList}>
+            <Image source={require('../assets/icon_money.png')} style={styles.icon}/>
+            <Left>
+              <Text style={styles.text}>Balance</Text>
+            </Left>
             <Right>
-              <Text style={{color: '#FFFFFF', textAlign: 'right'}}>12.5 &nbsp;XTZ</Text>
+              <Text style={styles.text}>12.5 &nbsp;XTZ</Text>
             </Right>
           </CardItem>
         </Card>
 
-        <Content contentContainerStyle={styles.form}>
-          <Content>
-            <Form style={{width: 240}}>
-              <Label style={{color: '#FFFFFF', textAlign: 'center'}}>Amount</Label>
-              <Item inlineLabel last>
-                <Label style={{color: '#FFFFFF', textAlign: 'right'}}>XTZ</Label>
-                <Input
-                  keyboardType="numeric"
-                  style={{color: '#FFFFFF', textAlign: 'right'}}
-                  value={this.state.term}
-                  onChangeText={(val) => this.onChange(val)}
-                />
-              </Item>
-            </Form>
-          </Content>
+        <Content contentContainerStyle={styles.formContent}>
+          <Form style={styles.form}>
+            <Label style={styles.formLabel}>Amount</Label>
+            <Item inlineLabel last>
+              <Label style={styles.formLabel}>XTZ</Label>
+              <Input
+                keyboardType="numeric"
+                style={styles.inputValue}
+                value={this.state.term}
+                onChangeText={(val) => this.onChange(val)}
+              />
+            </Item>
+          </Form>
           
           {/* <Text 
             numberOfLines={1} 
@@ -102,18 +103,12 @@ class DepositForm extends Component<Props, State> {
           </Text>
            */}
 
-          <TouchableHighlight onPress={this.onSubmit}>
+          <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
             <ImageBackground 
               source={require('../assets/button_bg_primary.png')} 
-              style={{
-                width: 365, 
-                height: 63, 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'center'
-              }}
+              style={styles.buttonImage}
             >
-              <Text style={{color: '#FFFFFF', textAlign: 'center', fontSize: 16}}>Deposit</Text>
+              <Text style={styles.buttonLabel}>Deposit</Text>
             </ImageBackground>
           </TouchableHighlight>
         </Content>
@@ -124,18 +119,57 @@ class DepositForm extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   bg: {
-    top: Constants.statusBarHeight,
-    backgroundColor: '#312934',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+    backgroundColor: styleConstants.color.primaryBlack,
   },
-  form: {
-    display: 'flex', 
+  card:{
+    marginTop: styleConstants.margin.middle,
+  },
+  cardList: {
+    backgroundColor: styleConstants.color.secondaryBlack
+  },
+  mainContent: {
     flexDirection: 'column', 
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  formContent: {
+    marginTop: styleConstants.margin.large,
+    flexDirection: 'column', 
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  form:{
+    width: 240
+  },
+  formLabel: {
+    color: styleConstants.color.textWhite,
+    textAlign: 'center'
+  },
+  icon: {
+    width: 24, 
+    height: 24
+  },
+  text: {
+    color: styleConstants.color.textWhite
+  },
+  inputValue: {
+    color: styleConstants.color.white,
+    textAlign: 'right'
+  },
+  button:{
+    marginTop: styleConstants.margin.large,
+  },
+  buttonImage:{
+    width: 365, 
+    height: 63, 
+    display: 'flex', 
+    flexDirection: 'column', 
+    justifyContent: 'center'
+  },
+  buttonLabel: {
+    color: styleConstants.color.white,
+    textAlign: 'center', 
+    fontSize: styleConstants.margin.base
   }
 })
 

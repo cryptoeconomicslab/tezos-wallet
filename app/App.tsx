@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
-
+import { Root } from 'native-base'
 import { Provider } from 'react-redux';
 import { store } from './redux/makeStore'
 import { AppWithNavigationState } from './Navigation'
@@ -40,12 +40,14 @@ export default class App extends React.Component<AppState> {
     if (!isReady){
       return <AppLoading />;
     }
-    
+
     console.ignoredYellowBox = ['Remote debugger'];
 
     return (
       <Provider store={ store }>
-        <AppWithNavigationState />
+        <Root>
+          <AppWithNavigationState />
+        </Root>
       </Provider>
     );
   }
