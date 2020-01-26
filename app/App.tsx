@@ -40,6 +40,8 @@ export default class App extends React.Component<AppState> {
     if (!isReady){
       return <AppLoading />;
     }
+    
+    console.ignoredYellowBox = ['Remote debugger'];
 
     return (
       <Provider store={ store }>

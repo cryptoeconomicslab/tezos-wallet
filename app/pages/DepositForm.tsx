@@ -16,6 +16,7 @@ import {
   Right,
   connectStyle,
    } from 'native-base';
+import Constants from 'expo-constants';
 
 type Props = {
   navigation: any
@@ -63,56 +64,59 @@ class DepositForm extends Component<Props, State> {
   render() {
     const { navigation } = this.props  
     return (
-      <Container>    
+      <Container style={{backgroundColor: '#312934'}}>    
         <StackHeader 
           title={'Deposit'}
           navigation={navigation}
         />
-        <Container style={{backgroundColor: '#312934'}}>
-          <Card transparent>
-            <CardItem style={{backgroundColor: '#312934'}}>
-              <Image source={require('../assets/icon_money.png')} style={{width: 24, height: 24}}/>
-              
-              <Right>
-                <Text style={{color: '#FFFFFF'}}>12.5 &nbsp;XTZ</Text>
-              </Right>
-            </CardItem>
-          </Card>
+
+        <Card transparent>
+          <CardItem style={{backgroundColor: '#312934'}}>
+            <Image source={require('../assets/icon_money.png')} style={{width: 24, height: 24}}/>
+            <Right>
+              <Text style={{color: '#FFFFFF', textAlign: 'right'}}>12.5 &nbsp;XTZ</Text>
+            </Right>
+          </CardItem>
+        </Card>
+
+        <Content contentContainerStyle={styles.form}>
           <Content>
-            <Form style={{width: 120}}>
-              <Item stackedLabel last>
-                <Label style={{color: '#FFFFFF'}}>Amount</Label>
+            <Form style={{width: 240}}>
+              <Label style={{color: '#FFFFFF', textAlign: 'center'}}>Amount</Label>
+              <Item inlineLabel last>
+                <Label style={{color: '#FFFFFF', textAlign: 'right'}}>XTZ</Label>
                 <Input
                   keyboardType="numeric"
-                  style={{color: '#FFFFFF'}}
+                  style={{color: '#FFFFFF', textAlign: 'right'}}
                   value={this.state.term}
                   onChangeText={(val) => this.onChange(val)}
                 />
-                <Text style={{color: '#FFFFFF'}}>XTZ</Text>
               </Item>
-              
             </Form>
-            <Text style={{color: '#FFFFFF'}}>{12.5 - Number(this.state.term)}</Text>
-            
-            <Text numberOfLines={1} style={{color: '#FFFFFF'}}>_________________________________________________</Text>
-            <TouchableHighlight onPress={this.onSubmit}>
-              <ImageBackground 
-                source={require('../assets/button_bg_primary.png')} 
-                style={{
-                  width: 365, 
-                  height: 63, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  justifyContent: 'center'
-                }}
-              >
-                <Text style={{color: '#FFFFFF', textAlign: 'center', fontSize: 16}}>Deposit</Text>
-              </ImageBackground>
-            </TouchableHighlight>
           </Content>
           
+          {/* <Text 
+            numberOfLines={1} 
+            style={{color: '#FFFFFF'}}
+          >_________________________________________________
+          </Text>
+           */}
 
-        </Container>
+          <TouchableHighlight onPress={this.onSubmit}>
+            <ImageBackground 
+              source={require('../assets/button_bg_primary.png')} 
+              style={{
+                width: 365, 
+                height: 63, 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center'
+              }}
+            >
+              <Text style={{color: '#FFFFFF', textAlign: 'center', fontSize: 16}}>Deposit</Text>
+            </ImageBackground>
+          </TouchableHighlight>
+        </Content>
       </Container>
     );
   }
@@ -120,10 +124,17 @@ class DepositForm extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   bg: {
+    top: Constants.statusBarHeight,
     backgroundColor: '#312934',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  form: {
+    display: 'flex', 
+    flexDirection: 'column', 
+    justifyContent: 'center',
     alignItems: 'center'
   }
 })

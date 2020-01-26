@@ -22,4 +22,4 @@ const middleware = createReactNavigationReduxMiddleware(
 export const store = createStore(
   appReducer,
   applyMiddleware(middleware),
-);
+)

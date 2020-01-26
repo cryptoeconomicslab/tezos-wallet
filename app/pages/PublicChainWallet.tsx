@@ -7,6 +7,7 @@ import {
   Container,
   connectStyle
    } from 'native-base';
+import Constants from 'expo-constants';
 
 type Props = {
   navigation: any
@@ -50,6 +51,7 @@ class PublicChainWallet extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   bg: {
+    top: Constants.statusBarHeight,
     backgroundColor: '#312934',
     display: 'flex',
     flexDirection: 'column',

@@ -4,6 +4,7 @@ import {
   Container,
   connectStyle
   } from 'native-base'
+import Constants from 'expo-constants';
   
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
@@ -56,6 +57,7 @@ class Main extends Component<Props> {
 
 const styles = StyleSheet.create({
   bg: {
+    top: Constants.statusBarHeight,
     backgroundColor: '#312934',
     display: 'flex',
     flexDirection: 'column',

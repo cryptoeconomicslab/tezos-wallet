@@ -10,6 +10,8 @@ import {
   Icon,
   connectStyle
   } from 'native-base'
+import Constants from 'expo-constants';
+  
 
 type Props = {
   title: string
@@ -43,11 +45,12 @@ class RootHeader extends Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#312934'
+    backgroundColor: '#312934',
+    top: Constants.statusBarHeight
   },
   header_title: {
     fontSize: 16,
-    textAlign: 'center'    
+    textAlign: 'center'
   }
 })
 
