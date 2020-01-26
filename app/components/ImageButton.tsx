@@ -2,45 +2,39 @@ import React, {Component} from 'react'
 import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
 import { 
   Text,
-  Image,
   connectStyle
   } from 'native-base'
+import imageButtonHandler from '../constants/imageButtonHandler'
+import styleConstants from '../constants/styleConstants'
 
 type Props = {
   title: string
-  amount: number
-  address: string
-  navigation: any
-  assets: () => void
+  type: string
   action: () => void
 }
 
 class ImageButton extends Component<Props> {
-  depositForm = () => {
-    const { navigation } = this.props
-    navigation.navigate('DepositForm')
-  } 
+  constructor(props) {
+    super(props)
+  }
 
   render() {
-    const { 
-      navigation, 
+    const {
       title, 
-      amount, 
-      address, 
-      assets, 
+      type, 
       action } = this.props
     
     return (
-      <TouchableHighlight onPress={this.depositForm}>
+      <TouchableHighlight onPress={action}>
         <ImageBackground 
-          source={require('../assets/button_bg_deposit.png')} 
+          source={imageButtonHandler(type).bg} 
           style={styles.button}
         >
           <ImageBackground 
-            source={require('../assets/transaction_receive.png')} 
+            source={imageButtonHandler(type).icon} 
             style={styles.buttonIcon}
           ></ImageBackground>
-          <Text style={styles.label}>Deposit</Text>
+          <Text style={styles.label}>{title}</Text>
         </ImageBackground>
       </TouchableHighlight>
     );
@@ -49,17 +43,17 @@ class ImageButton extends Component<Props> {
 
 const styles = StyleSheet.create({
   button: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 32,
-    padding: 8,
+    margin: styleConstants.margin.middle,
+    padding: styleConstants.margin.small,
     width: 372,
     height: 88
   },
   label: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 20,
+    color: styleConstants.color.textWhite,
+    fontSize: styleConstants.fontSize.large,
+    fontWeight: styleConstants.fontWeight.bold,
     marginLeft: 86,
     marginRight: 'auto'
   },

@@ -24,13 +24,6 @@ type State = {
 
 
 class PublicChainWallet extends Component<Props, State> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showToast: false
-    };
-  }
-
   rootchain = () => {
     const { navigation } = this.props
     navigation.navigate('PublicChainWallet')
@@ -39,11 +32,14 @@ class PublicChainWallet extends Component<Props, State> {
   onTransactionSuccess = () => {
     Toastr.showToast('Success', 'success', 2000);
   }
-  
+
+  depositForm = () => {
+    const { navigation } = this.props
+    navigation.navigate('DepositForm')
+  } 
 
   render() {
     const { navigation } = this.props
-    const { showToast } = this.state
     
     return (
       <Container>
@@ -60,8 +56,11 @@ class PublicChainWallet extends Component<Props, State> {
             action={this.rootchain}
           />
           <ImageButton
-            navigation={navigation}
+            title='Deposit'
+            action={this.depositForm}
+            type={'deposit'}
           />
+          {/* あとで消す */}
           <Button onPress={this.onTransactionSuccess}><Text>toast</Text></Button>
         </Container>
       </Container>

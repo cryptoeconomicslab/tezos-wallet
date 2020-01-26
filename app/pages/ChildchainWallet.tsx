@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { StyleSheet } from 'react-native'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
+import Constants from 'expo-constants';
+import styleConstants from '../constants/styleConstants'
 
 import { 
   Container,
@@ -45,8 +47,8 @@ class ChildchainWallet extends Component<Props> {
 
 const styles = StyleSheet.create({
   bg: {
-    backgroundColor: '#312934',
-    display: 'flex',
+    top: Constants.statusBarHeight,
+    backgroundColor: styleConstants.color.primaryBlack,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
