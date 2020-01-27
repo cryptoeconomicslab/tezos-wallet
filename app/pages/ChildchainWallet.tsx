@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 import ImageButton from '../components/ImageButton'
-import ListItems from '../components/ListItems'
+import ListItemMapping from '../components/ListItems'
 import Constants from 'expo-constants';
 import styleConstants from '../constants/styleConstants'
 
@@ -14,6 +14,8 @@ import {
   Item,
   Picker,
   Content,
+  List,
+
   connectStyle
    } from 'native-base';
 
@@ -31,6 +33,13 @@ class ChildchainWallet extends Component<Props> {
 
   render() {
     const { navigation } = this.props
+
+    const data = [
+      {"id": "4", "start": 40000000, "end": 41000000, "transaction_id": "0xsdfaf123e1eeeqw"},
+      {"id": "3", "start": 30000000, "end": 31000000, "transaction_id": "0xsdfaf123e1eeeqw"},
+      {"id": "2", "start": 20000000, "end": 21000000, "transaction_id": "0xsdfaf123e1eeeqw"},
+      {"id": "1", "start": 10000000, "end": 11000000, "transaction_id": "0xsdfaf123e1eeeqw"}
+    ]
     
     return (
       <Container>
@@ -51,8 +60,12 @@ class ChildchainWallet extends Component<Props> {
             action={this.sendForm}
             type={'send'}
           />
+          <Content>
+            <List>
+              <ListItemMapping data={data} />
+            </List>
+          </Content>
         </Container>
-        <ListItems />
       </Container>
     );
   }
@@ -62,9 +75,6 @@ const styles = StyleSheet.create({
   bg: {
     top: Constants.statusBarHeight,
     backgroundColor: styleConstants.color.primaryBlack,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
   }
 })
 

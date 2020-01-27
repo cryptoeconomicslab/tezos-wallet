@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
+import styleConstants from '../constants/styleConstants'
 import { 
   Text,
   connectStyle
@@ -41,25 +42,27 @@ class WalletCard extends Component<Props> {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 8,
-    padding: 8,
+    margin: styleConstants.margin.small,
+    padding: styleConstants.margin.base,
     width: 364,
-    height: 200
+    height: 200,
+    alignSelf: 'center',
   },
   card_title: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 20,
+    color: styleConstants.color.textWhite,
+    fontSize: styleConstants.fontSize.large,
+    fontWeight: styleConstants.fontWeight.bold
   },
   card_point: {
-    color: 'rgba(255, 255, 255 ,0.5)',
+    color: styleConstants.color.textWhite,
     fontSize: 70,
     textAlign: 'right'
   },
   card_address: {
-    color: 'rgba(255, 255, 255 ,0.5)',
-    fontSize: 14,
+    color: styleConstants.color.textWhite,
+    fontSize: styleConstants.fontSize.base,
     textAlign: 'center',
-    marginTop: 32
+    marginTop: styleConstants.margin.middle
   }
 })
 

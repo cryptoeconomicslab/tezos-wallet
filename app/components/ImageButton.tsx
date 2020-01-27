@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'center',
     margin: styleConstants.margin.middle,
     padding: styleConstants.margin.small,
     width: 372,
