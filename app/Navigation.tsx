@@ -13,6 +13,7 @@ import AddressList from './pages/AddressList'
 import PublicChainWallet from './pages/PublicChainWallet'
 import ChildchainWallet from './pages/ChildchainWallet'
 import DepositForm from './pages/DepositForm'
+import TransferForm from './pages/TransferForm'
 
 const MainNavigation = createDrawerNavigator(
   {
@@ -154,7 +155,8 @@ export const NestNavigation = createStackNavigator(
     MainNavigation: { screen: MainNavigation },
     Modal: { screen: Modal },
     PublicChainWallet: { screen: PublicChainWalletNavigation },
-    DepositForm: {screen: DepositForm},
+    DepositForm: { screen: DepositForm },
+    TransferForm: { screen: TransferForm },
     ChildchainWallet: { screen: ChildchainWalletNavigation }
   },
   {initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none'},

@@ -15,7 +15,7 @@ import {
   Picker,
   Content,
   List,
-
+  Text,
   connectStyle
    } from 'native-base';
 
@@ -26,9 +26,9 @@ type Props = {
 
 class ChildchainWallet extends Component<Props> {
 
-  sendForm = () => {
+  transferForm = () => {
     const { navigation } = this.props
-    navigation.navigate('main')
+    navigation.navigate('TransferForm')
   }
 
   render() {
@@ -57,11 +57,12 @@ class ChildchainWallet extends Component<Props> {
           />
           <ImageButton
             title='Transfer XTZ'
-            action={this.sendForm}
-            type={'send'}
+            action={this.transferForm}
+            type={'transfer'}
           />
           <Content>
-            <List>
+            <Text style={styles.listLabel}>UTXO</Text>
+            <List style={styles.listArea}>
               <ListItemMapping data={data} />
             </List>
           </Content>
@@ -75,6 +76,16 @@ const styles = StyleSheet.create({
   bg: {
     top: Constants.statusBarHeight,
     backgroundColor: styleConstants.color.primaryBlack,
+  },
+  listLabel: {
+    margin: styleConstants.margin.small,
+    color: styleConstants.color.textWhite,
+    fontSize: styleConstants.fontSize.middle,
+    fontWeight: styleConstants.fontWeight.bold
+  },
+  listArea: {
+    // padding: styleConstants.margin.base,
+    // backgroundColor: styleConstants.color.secondaryBlack
   }
 })
 
