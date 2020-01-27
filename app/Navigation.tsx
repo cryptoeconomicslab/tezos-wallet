@@ -5,7 +5,6 @@ import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createReduxContainer } from 'react-navigation-redux-helpers';
 
 import Main from './pages/Main'
-import Push from './pages/Push'
 import Modal from './pages/Modal'
 import NetworkSelect from './pages/NetworkSelect'
 import ChallengeList from './pages/ChallengeList'
@@ -53,7 +52,6 @@ const MainNavigation = createDrawerNavigator(
         title: 'Address list'
       }
     },
-    Push: { screen: Push },
   },
   {
     initialRouteName: 'Main',
@@ -99,7 +97,6 @@ const PublicChainWalletNavigation = createDrawerNavigator(
         title: 'Address list'
       }
     },
-    Push: { screen: Push },
   },
   {
     initialRouteName: 'PublicChainWallet',
@@ -141,7 +138,6 @@ const ChildchainWalletNavigation = createDrawerNavigator(
         title: 'Address list'
       }
     },
-    Push: { screen: Push },
   },
   {
     initialRouteName: 'ChildchainWallet',
