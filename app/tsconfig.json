@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "lib": ["es2017", "dom"],
+    "declaration": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "noEmit": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "skipLibCheck": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    // "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "exclude": ["node_modules", "dist", "native-base-theme"],
+  "include": ["components", "constants", "pages", "redux"]
+}
