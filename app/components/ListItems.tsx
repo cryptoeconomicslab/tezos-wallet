@@ -18,7 +18,7 @@ export type Props = {
 
 const ListItemMapping = forwardRef((props: Props, ref: any) => {
   console.dir(ref)
-  return props.data.map(({ id, start, end, transaction_id }) => {
+  return props.data.map(({ id, start, end, transactionId }) => {
     return (
       <ListItem noIndent style={styles.listItem} key={id}>
         <Left>

@@ -30,25 +30,25 @@ export default class ChallengeList extends Component<Props> {
         id: '4',
         start: 40000000,
         end: 41000000,
-        transaction_id: '0xsdfaf123e1eeeqw'
+        transactionId: '0xsdfaf123e1eeeqw'
       },
       {
         id: '3',
         start: 30000000,
         end: 31000000,
-        transaction_id: '0xsdfaf123e1eeeqw'
+        transactionId: '0xsdfaf123e1eeeqw'
       },
       {
         id: '2',
         start: 20000000,
         end: 21000000,
-        transaction_id: '0xsdfaf123e1eeeqw'
+        transactionId: '0xsdfaf123e1eeeqw'
       },
       {
         id: '1',
         start: 10000000,
         end: 11000000,
-        transaction_id: '0xsdfaf123e1eeeqw'
+        transactionId: '0xsdfaf123e1eeeqw'
       }
     ]
 
