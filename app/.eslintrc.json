@@ -12,9 +12,30 @@
   "parserOptions": {
     "sourceType": "module"
   },
+  "settings": {
+   "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-use-before-define": 0,
-    "@typescript-eslint/interface-name-prefix": 0
+    "@typescript-eslint/interface-name-prefix": 0,
+    // "react/jsx-filename-extension": [
+    //   "error",
+    //   { "extensions": [".jsx", ".tsx"] }
+    // ],
+    "react/prop-types": "off",
+    // "react/jsx-uses-vars": [
+    //   1
+      // { "extensions": [".js", ".jsx", "ts", "tsx"] }
+    // ],
+    "spaced-comment": [
+      "error",
+      "always",
+      { "markers": ["/ <reference"] }
+    ]
   }
 }
