@@ -34,7 +34,7 @@ class StackHeader extends Component<Props> {
           </Button>
         </Left>
         <Body>
-          <Title style={styles.header_title}>{title}</Title>
+          <Title style={styles.headerTitle}>{title}</Title>
         </Body>
         <Right />
       </Header>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#312934',
     top: Constants.statusBarHeight
   },
-  header_title: {
+  headerTitle: {
     fontSize: 16,
     textAlign: 'center'
   }

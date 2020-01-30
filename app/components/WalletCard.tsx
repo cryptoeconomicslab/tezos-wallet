@@ -19,9 +19,9 @@ class WalletCard extends Component<Props> {
     return (
       <TouchableHighlight onPress={action}>
         <ImageBackground source={assets} style={styles.card}>
-          <Text style={styles.card_title}>{title}</Text>
-          <Text style={styles.card_point}>{amount}</Text>
-          <Text style={styles.card_address}>{address}</Text>
+          <Text style={styles.cardTitle}>{title}</Text>
+          <Text style={styles.cardPoint}>{amount}</Text>
+          <Text style={styles.cardAddress}>{address}</Text>
         </ImageBackground>
       </TouchableHighlight>
     )
@@ -36,17 +36,17 @@ const styles = StyleSheet.create({
     height: 200,
     alignSelf: 'center'
   },
-  card_title: {
+  cardTitle: {
     color: styleConstants.color.textWhite,
     fontSize: styleConstants.fontSize.large,
     fontWeight: styleConstants.fontWeight.bold
   },
-  card_point: {
+  cardPoint: {
     color: styleConstants.color.textWhite,
     fontSize: 70,
     textAlign: 'right'
   },
-  card_address: {
+  cardAddress: {
     color: styleConstants.color.textWhite,
     fontSize: styleConstants.fontSize.base,
     textAlign: 'center',
