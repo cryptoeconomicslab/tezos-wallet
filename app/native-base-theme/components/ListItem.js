@@ -1,13 +1,13 @@
 // @flow
 
-import { Platform, PixelRatio } from 'react-native';
+import { Platform, PixelRatio } from 'react-native'
 
-import pickerTheme from './Picker';
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import pickerTheme from './Picker'
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
-  const platform = variables.platform;
+  const platform = variables.platform
   const selectedStyle = {
     'NativeBase.Text': {
       color: variables.listItemSelected
@@ -15,7 +15,7 @@ export default (variables /* : * */ = variable) => {
     'NativeBase.Icon': {
       color: variables.listItemSelected
     }
-  };
+  }
 
   const listItemTheme = {
     'NativeBase.InputGroup': {
@@ -100,7 +100,9 @@ export default (variables /* : * */ = variable) => {
       paddingTop:
         platform === PLATFORM.IOS ? variables.listItemPadding + 25 : undefined,
       paddingBottom:
-        platform === PLATFORM.ANDROID ? variables.listItemPadding + 20 : undefined,
+        platform === PLATFORM.ANDROID
+          ? variables.listItemPadding + 20
+          : undefined,
       flexDirection: 'row',
       borderColor: variables.listBorderColor,
       'NativeBase.Text': {
@@ -440,7 +442,7 @@ export default (variables /* : * */ = variable) => {
     borderBottomWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
     backgroundColor: variables.listBg,
     borderColor: variables.listBorderColor
-  };
+  }
 
-  return listItemTheme;
-};
+  return listItemTheme
+}

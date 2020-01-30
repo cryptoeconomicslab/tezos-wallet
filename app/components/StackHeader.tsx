@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
-import { StyleSheet} from 'react-native'
-import { 
-  Header, 
-  Left, 
-  Body, 
-  Right, 
-  Button, 
-  Title, 
+import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
+import {
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Title,
   Icon,
   connectStyle
-  } from 'native-base'
-import Constants from 'expo-constants';
+} from 'native-base'
+import Constants from 'expo-constants'
 
 type Props = {
   title: string
@@ -26,11 +26,11 @@ class StackHeader extends Component<Props> {
   render() {
     const { title } = this.props
 
-    return(
+    return (
       <Header style={styles.header}>
-        <Left >
+        <Left>
           <Button transparent onPress={this.goBack}>
-            <Icon name='arrow-back'/>
+            <Icon name="arrow-back" />
           </Button>
         </Left>
         <Body>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   header_title: {
     fontSize: 16,
-    textAlign: 'center'    
+    textAlign: 'center'
   }
 })
 

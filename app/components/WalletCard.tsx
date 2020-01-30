@@ -1,10 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
 import styleConstants from '../constants/styleConstants'
-import { 
-  Text,
-  connectStyle
-  } from 'native-base'
+import { Text, connectStyle } from 'native-base'
 
 type Props = {
   title: string
@@ -17,26 +14,17 @@ type Props = {
 
 class WalletCard extends Component<Props> {
   render() {
-    const { 
-      navigation, 
-      title, 
-      amount, 
-      address, 
-      assets, 
-      action } = this.props
-    
+    const { navigation, title, amount, address, assets, action } = this.props
+
     return (
       <TouchableHighlight onPress={action}>
-        <ImageBackground 
-          source={assets} 
-          style={styles.card}
-        >
+        <ImageBackground source={assets} style={styles.card}>
           <Text style={styles.card_title}>{title}</Text>
           <Text style={styles.card_point}>{amount}</Text>
           <Text style={styles.card_address}>{address}</Text>
         </ImageBackground>
       </TouchableHighlight>
-    );
+    )
   }
 }
 
@@ -46,7 +34,7 @@ const styles = StyleSheet.create({
     padding: styleConstants.margin.base,
     width: 364,
     height: 200,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   card_title: {
     color: styleConstants.color.textWhite,

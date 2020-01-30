@@ -1,10 +1,10 @@
 // @flow
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
-  const platform = variables.platform;
+  const platform = variables.platform
 
   const toastTheme = {
     '.danger': {
@@ -35,7 +35,7 @@ export default (variables /* : * */ = variable) => {
         fontSize: 14
       }
     }
-  };
+  }
 
-  return toastTheme;
-};
+  return toastTheme
+}

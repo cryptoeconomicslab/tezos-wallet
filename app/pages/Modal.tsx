@@ -1,7 +1,16 @@
-import React, {Component} from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+import React, { Component } from 'react'
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Icon,
+  Title
+} from 'native-base'
 
-type Props = {};
+type Props = {}
 export default class Modal extends Component<Props> {
   render() {
     return (
@@ -9,7 +18,7 @@ export default class Modal extends Component<Props> {
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name='close' />
+              <Icon name="close" />
             </Button>
           </Left>
           <Body>
@@ -18,6 +27,6 @@ export default class Modal extends Component<Props> {
           <Right />
         </Header>
       </Container>
-    );
+    )
   }
 }

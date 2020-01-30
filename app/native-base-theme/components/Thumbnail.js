@@ -34,7 +34,7 @@ export default () => {
     width: 56,
     height: 56,
     borderRadius: 28
-  };
+  }
 
-  return thumbnailTheme;
-};
+  return thumbnailTheme
+}

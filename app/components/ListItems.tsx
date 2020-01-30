@@ -1,40 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react'
 import { StyleSheet } from 'react-native'
-import { 
-  ListItem, 
-  Text, 
-  Left, 
-  Right, 
-  Button,
-  connectStyle
-} from 'native-base';
+import { ListItem, Text, Left, Right, Button, connectStyle } from 'native-base'
 import styleConstants from '../constants/styleConstants'
 
+export type transaction = {
+  id: string
+  start: number
+  end: number
+  transaction_id: string
+}
 
-const ListItemMapping = React.memo((props) => {
-    console.log(props)
+export type transactions = Array<transaction>
+
+export type Props = {
+  data: transactions
+}
+
+const ListItemMapping = forwardRef((props: Props, ref: any) => {
+  console.dir(ref)
+  return props.data.map(({ id, start, end, transaction_id }) => {
     return (
-      props.data.map(({id, start, end, transaction_id}) => {
-        return (
-          <ListItem noIndent style={styles.listItem} key={id}>
-            <Left>
-              <Text style={styles.listLabel} >{start} → {end}</Text>
-            </Left>
-            <Right>
-              <Button hasText transparent onPress={() => console.log(id)}>
-                <Text style={styles.listButtonLabel}>Exit</Text>
-              </Button>
-            </Right>
-          </ListItem>
-        )
-      })
+      <ListItem noIndent style={styles.listItem} key={id}>
+        <Left>
+          <Text ref={ref} style={styles.listLabel}>
+            {start} → {end}
+          </Text>
+        </Left>
+        <Right>
+          <Button hasText transparent onPress={() => console.log(id)}>
+            <Text style={styles.listButtonLabel}>Exit</Text>
+          </Button>
+        </Right>
+      </ListItem>
     )
+  })
 })
 
 const styles = StyleSheet.create({
   listItem: {
     backgroundColor: styleConstants.color.primaryBlack,
-    borderColor: styleConstants.color.primaryBlack,
+    borderColor: styleConstants.color.primaryBlack
   },
   listLabel: {
     color: styleConstants.color.textWhite,

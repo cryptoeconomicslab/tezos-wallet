@@ -1,13 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import StackHeader from '../components/StackHeader'
-import { 
-  Container,
-  Icon,
-  Form,
-  Item,
-  Picker,
-  Content,
-   } from 'native-base';
+import { Container, Icon, Form, Item, Picker, Content } from 'native-base'
 
 type Props = {
   navigation: any
@@ -19,32 +12,29 @@ type State = {
 
 export default class NetworkSelect extends Component<Props, State> {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       selected2: ''
-    };
+    }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       selected2: 'babylonnet'
-    });
+    })
   }
 
   onValueChange2(value: string) {
     this.setState({
       selected2: value
-    });
+    })
   }
 
   render() {
-      const { navigation } = this.props  
+    const { navigation } = this.props
     return (
-      <Container>    
-        <StackHeader 
-          title={'Network'}
-          navigation={navigation}
-        />
+      <Container>
+        <StackHeader title={'Network'} navigation={navigation} />
         <Container>
           <Content>
             <Form>
@@ -54,7 +44,7 @@ export default class NetworkSelect extends Component<Props, State> {
                   iosIcon={<Icon name="arrow-down" />}
                   style={{ width: undefined }}
                   placeholder="public chain"
-                  placeholderStyle={{ color: "#bfc6ea" }}
+                  placeholderStyle={{ color: '#bfc6ea' }}
                   placeholderIconColor="#007aff"
                   selectedValue={this.state.selected2}
                   onValueChange={this.onValueChange2.bind(this)}
@@ -67,6 +57,6 @@ export default class NetworkSelect extends Component<Props, State> {
           </Content>
         </Container>
       </Container>
-    );
+    )
   }
 }

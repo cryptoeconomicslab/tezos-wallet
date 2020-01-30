@@ -1,7 +1,14 @@
-import React, {Component} from 'react';
-import { StyleSheet, Image, ImageBackground, TouchableHighlight, Alert, View } from 'react-native'
+import React, { Component } from 'react'
+import {
+  StyleSheet,
+  Image,
+  ImageBackground,
+  TouchableHighlight,
+  Alert,
+  View
+} from 'react-native'
 import StackHeader from '../components/StackHeader'
-import { 
+import {
   Container,
   Text,
   Form,
@@ -14,8 +21,8 @@ import {
   Right,
   Left,
   connectStyle
-   } from 'native-base';
-import Constants from 'expo-constants';
+} from 'native-base'
+import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 
 type Props = {
@@ -36,12 +43,12 @@ class TransferForm extends Component<Props, State> {
     }
   }
 
-  onChange = (val: string) =>  {
-    this.setState({term: val})
+  onChange = (val: string) => {
+    this.setState({ term: val })
   }
 
-  onChangeAddress = (val: string) =>  {
-    this.setState({address: val})
+  onChangeAddress = (val: string) => {
+    this.setState({ address: val })
   }
 
   onSubmit = () => {
@@ -55,109 +62,109 @@ class TransferForm extends Component<Props, State> {
         {
           text: 'CANCEL',
           onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
+          style: 'cancel'
         },
         {
           text: 'COMFIRM',
-          style: 'default', 
+          style: 'default',
           onPress: () => console.log('OK Pressed')
-        },
+        }
       ],
-      {cancelable: true},
-    );
+      { cancelable: true }
+    )
   }
 
   render() {
     const { navigation } = this.props
     const { term } = this.state
     return (
-      <Container>    
-        <StackHeader 
-          title={'Deposit'}
-          navigation={navigation}
-        />
+      <Container>
+        <StackHeader title={'Deposit'} navigation={navigation} />
         <Container style={styles.bg}>
-        <Card transparent style={styles.card}>
-          <CardItem style={styles.cardList}>
-            <Image source={require('../assets/icon_money.png')} style={styles.icon}/>
-            <Left>
-              <Text style={styles.text}>Balance</Text>
-            </Left>
-            <Right>
-              <Text style={styles.text}>{Number(12.5 - term)} &nbsp;XTZ</Text>
-            </Right>
-          </CardItem>
-        </Card>
-
-        <Content contentContainerStyle={styles.formContent}>
-          <Form style={styles.form}>
-            <Label style={styles.formLabel}>Amount</Label>
-            <Item inlineLabel last>
-              <Label style={styles.formLabel}>XTZ</Label>
-              <Input
-                keyboardType="numeric"
-                style={styles.inputValue}
-                value={this.state.term}
-                onChangeText={(val) => this.onChange(val)}
+          <Card transparent style={styles.card}>
+            <CardItem style={styles.cardList}>
+              <Image
+                source={require('../assets/icon_money.png')}
+                style={styles.icon}
               />
-            </Item>
-          </Form>
+              <Left>
+                <Text style={styles.text}>Balance</Text>
+              </Left>
+              <Right>
+                <Text style={styles.text}>{Number(12.5 - term)} &nbsp;XTZ</Text>
+              </Right>
+            </CardItem>
+          </Card>
 
-          <ImageBackground 
-              source={require('../assets/icon_arrow_down.png')} 
+          <Content contentContainerStyle={styles.formContent}>
+            <Form style={styles.form}>
+              <Label style={styles.formLabel}>Amount</Label>
+              <Item inlineLabel last>
+                <Label style={styles.formLabel}>XTZ</Label>
+                <Input
+                  keyboardType="numeric"
+                  style={styles.inputValue}
+                  value={this.state.term}
+                  onChangeText={val => this.onChange(val)}
+                />
+              </Item>
+            </Form>
+
+            <ImageBackground
+              source={require('../assets/icon_arrow_down.png')}
               style={styles.imageArrow}
             ></ImageBackground>
 
             <Form style={styles.addressForm}>
-            <Label style={styles.formLabelLeft}>To (Wallet ID)</Label>
-            <Item inlineLabel last>
-              <Input
-                keyboardType="email-address"
-                style={styles.inputValue}
-                value={this.state.address}
-                onChangeText={(val) => this.onChangeAddress(val)}
-              />
-            </Item>
-          </Form>
-          
-          <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
-            <ImageBackground 
-              source={require('../assets/button_bg_primary.png')} 
-              style={styles.buttonImage}
-            >
-              <Text style={styles.buttonLabel}>Send</Text>
-            </ImageBackground>
-          </TouchableHighlight>
-        </Content>
+              <Label style={styles.formLabelLeft}>To (Wallet ID)</Label>
+              <Item inlineLabel last>
+                <Input
+                  keyboardType="email-address"
+                  style={styles.inputValue}
+                  value={this.state.address}
+                  onChangeText={val => this.onChangeAddress(val)}
+                />
+              </Item>
+            </Form>
+
+            <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
+              <ImageBackground
+                source={require('../assets/button_bg_primary.png')}
+                style={styles.buttonImage}
+              >
+                <Text style={styles.buttonLabel}>Send</Text>
+              </ImageBackground>
+            </TouchableHighlight>
+          </Content>
         </Container>
       </Container>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   bg: {
     top: styleConstants.margin.base,
-    backgroundColor: styleConstants.color.primaryBlack,
+    backgroundColor: styleConstants.color.primaryBlack
   },
-  card:{
-    marginTop: styleConstants.margin.middle,
+  card: {
+    marginTop: styleConstants.margin.middle
   },
   cardList: {
     backgroundColor: styleConstants.color.secondaryBlack
   },
   mainContent: {
-    flexDirection: 'column', 
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
   formContent: {
     marginTop: styleConstants.margin.large,
-    flexDirection: 'column', 
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  form:{
+  form: {
     width: 240
   },
   addressForm: {
@@ -172,7 +179,7 @@ const styles = StyleSheet.create({
     textAlign: 'left'
   },
   icon: {
-    width: 24, 
+    width: 24,
     height: 24
   },
   text: {
@@ -182,24 +189,24 @@ const styles = StyleSheet.create({
     color: styleConstants.color.white,
     textAlign: 'right'
   },
-  button:{
-    marginTop: styleConstants.margin.large,
+  button: {
+    marginTop: styleConstants.margin.large
   },
-  buttonImage:{
-    width: 365, 
-    height: 63, 
-    display: 'flex', 
-    flexDirection: 'column', 
+  buttonImage: {
+    width: 365,
+    height: 63,
+    display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center'
   },
   imageArrow: {
     margin: styleConstants.margin.base,
-    width: 24, 
-    height: 46, 
+    width: 24,
+    height: 46
   },
   buttonLabel: {
     color: styleConstants.color.white,
-    textAlign: 'center', 
+    textAlign: 'center',
     fontSize: styleConstants.margin.base
   }
 })

@@ -1,9 +1,9 @@
 // @flow
 
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
   const radioTheme = {
@@ -25,7 +25,7 @@ export default (variables /* : * */ = variable) => {
       fontSize:
         Platform.OS === PLATFORM.IOS ? undefined : variables.radioBtnSize
     }
-  };
+  }
 
-  return radioTheme;
-};
+  return radioTheme
+}

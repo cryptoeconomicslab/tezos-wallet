@@ -1,9 +1,9 @@
 // @flow
 
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
   const titleTheme = {
@@ -15,7 +15,7 @@ export default (variables /* : * */ = variable) => {
     paddingLeft: Platform.OS === PLATFORM.IOS ? 4 : 0,
     marginLeft: Platform.OS === PLATFORM.IOS ? undefined : -3,
     paddingTop: 1
-  };
+  }
 
-  return titleTheme;
-};
+  return titleTheme
+}

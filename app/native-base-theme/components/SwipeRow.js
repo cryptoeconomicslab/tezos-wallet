@@ -40,7 +40,7 @@ export default () => {
       alignSelf: 'stretch',
       borderRadius: 0
     }
-  };
+  }
 
-  return swipeRowTheme;
-};
+  return swipeRowTheme
+}

@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
-import { StyleSheet} from 'react-native'
-import { 
-  Header, 
-  Left, 
-  Body, 
-  Right, 
-  Button, 
-  Title, 
+import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
+import {
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Title,
   Icon,
   connectStyle
-  } from 'native-base'
+} from 'native-base'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 
@@ -27,15 +27,15 @@ class RootHeader extends Component<Props> {
   render() {
     const { title } = this.props
 
-    return(
+    return (
       <Header style={styles.header}>
-        <Left >
+        <Left>
           <Button transparent onPress={this.menu}>
-            <Icon name='menu'/>
+            <Icon name="menu" />
           </Button>
         </Left>
         <Body>
-          <Title style={styles.header_title}>{title}</Title>
+          <Title style={styles.headerTitle}>{title}</Title>
         </Body>
         <Right />
       </Header>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: styleConstants.color.primaryBlack,
     top: Constants.statusBarHeight
   },
-  header_title: {
+  headerTitle: {
     fontSize: 16,
     textAlign: 'center'
   }

@@ -1,6 +1,6 @@
 // @flow
 
-import variable from './../variables/platform';
+import variable from './../variables/platform'
 
 export default (variables /* : * */ = variable) => {
   const cardTheme = {
@@ -31,7 +31,7 @@ export default (variables /* : * */ = variable) => {
     shadowOpacity: 0.1,
     shadowRadius: 1.5,
     elevation: 3
-  };
+  }
 
-  return cardTheme;
-};
+  return cardTheme
+}

@@ -19,7 +19,7 @@ export default () => {
         marginRight: 0
       }
     }
-  };
+  }
 
-  return fabTheme;
-};
+  return fabTheme
+}

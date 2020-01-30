@@ -1,9 +1,9 @@
 // @flow
 
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
   const itemTheme = {
@@ -235,7 +235,7 @@ export default (variables /* : * */ = variable) => {
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 2
-  };
+  }
 
-  return itemTheme;
-};
+  return itemTheme
+}

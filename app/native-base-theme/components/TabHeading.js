@@ -1,10 +1,10 @@
 // @flow
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
-  const platform = variables.platform;
+  const platform = variables.platform
 
   const tabHeadingTheme = {
     flexDirection: 'row',
@@ -34,7 +34,7 @@ export default (variables /* : * */ = variable) => {
         color: variables.topTabBarActiveTextColor
       }
     }
-  };
+  }
 
-  return tabHeadingTheme;
-};
+  return tabHeadingTheme
+}

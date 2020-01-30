@@ -8,7 +8,7 @@ export default () => {
       borderWidth: 0,
       backgroundColor: 'transparent'
     }
-  };
+  }
 
-  return contentTheme;
-};
+  return contentTheme
+}

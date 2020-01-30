@@ -80,7 +80,7 @@ export default () => {
       },
       marginLeft: 15
     }
-  };
+  }
 
-  return theme;
-};
+  return theme
+}

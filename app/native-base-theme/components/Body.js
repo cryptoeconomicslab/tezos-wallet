@@ -5,7 +5,7 @@ export default () => {
     flex: 1,
     alignItems: 'center',
     alignSelf: 'center'
-  };
+  }
 
-  return bodyTheme;
-};
+  return bodyTheme
+}

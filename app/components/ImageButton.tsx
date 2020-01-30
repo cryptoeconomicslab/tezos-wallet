@@ -1,17 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import imageButtonHandler from '../constants/imageButtonHandler'
 import styleConstants from '../constants/styleConstants'
 
-import { 
-  StyleSheet,
-  ImageBackground, 
-  TouchableHighlight
-} from 'react-native'
+import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
 
-import { 
-  Text,
-  connectStyle
-} from 'native-base'
+import { Text, connectStyle } from 'native-base'
 
 type Props = {
   title: string
@@ -25,25 +18,22 @@ class ImageButton extends Component<Props> {
   }
 
   render() {
-    const {
-      title, 
-      type, 
-      action } = this.props
-    
+    const { title, type, action } = this.props
+
     return (
       <TouchableHighlight onPress={action}>
-        <ImageBackground 
-          source={imageButtonHandler(type).bg} 
+        <ImageBackground
+          source={imageButtonHandler(type).bg}
           style={styles.button}
         >
-          <ImageBackground 
-            source={imageButtonHandler(type).icon} 
+          <ImageBackground
+            source={imageButtonHandler(type).icon}
             style={styles.buttonIcon}
           ></ImageBackground>
           <Text style={styles.label}>{title}</Text>
         </ImageBackground>
       </TouchableHighlight>
-    );
+    )
   }
 }
 
@@ -64,7 +54,7 @@ const styles = StyleSheet.create({
     marginLeft: 70,
     marginRight: 'auto'
   },
-  buttonIcon:{
+  buttonIcon: {
     width: 70,
     height: 70
   }

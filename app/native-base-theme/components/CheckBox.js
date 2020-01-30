@@ -1,6 +1,6 @@
 // @flow
 
-import variable from './../variables/platform';
+import variable from './../variables/platform'
 
 export default (variables /* : * */ = variable) => {
   const checkBoxTheme = {
@@ -32,7 +32,7 @@ export default (variables /* : * */ = variable) => {
     paddingLeft: variables.CheckboxPaddingLeft - 1,
     paddingBottom: variables.CheckboxPaddingBottom,
     left: 10
-  };
+  }
 
-  return checkBoxTheme;
-};
+  return checkBoxTheme
+}

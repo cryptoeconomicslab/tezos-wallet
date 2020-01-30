@@ -1,27 +1,17 @@
 import { StyleSheet } from 'react-native'
-import { 
-  connectStyle, Toast
-} from 'native-base';
+import { connectStyle, Toast } from 'native-base'
 import styleConstants from '../constants/styleConstants'
 
 const typeSwitcher = (type: string) => {
-  switch(type) {
+  switch (type) {
     case 'success':
-      return (
-        styles.success
-      )
+      return styles.success
     case 'warn':
-      return (
-        styles.warn
-      )  
+      return styles.warn
     case 'error':
-      return (
-        styles.error
-      )
-    default: 
-      return (
-        styles.default
-      )
+      return styles.error
+    default:
+      return styles.default
   }
 }
 
@@ -32,10 +22,10 @@ const Toastr = {
       duration,
       style: typeSwitcher(styleType),
       position: 'bottom',
-      textStyle: { textAlign: 'center' },
-    });
-  },
-};
+      textStyle: { textAlign: 'center' }
+    })
+  }
+}
 
 const styles = StyleSheet.create({
   default: {
@@ -47,7 +37,7 @@ const styles = StyleSheet.create({
     shadowColor: styleConstants.color.black,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
-    elevation: 2,
+    elevation: 2
   },
   success: {
     backgroundColor: styleConstants.color.secondary,
@@ -58,7 +48,7 @@ const styles = StyleSheet.create({
     shadowColor: styleConstants.color.black,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
-    elevation: 2,
+    elevation: 2
   },
   warn: {
     backgroundColor: styleConstants.color.warn,
@@ -69,7 +59,7 @@ const styles = StyleSheet.create({
     shadowColor: styleConstants.color.black,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
-    elevation: 2,
+    elevation: 2
   },
   error: {
     backgroundColor: styleConstants.color.error,
@@ -80,7 +70,7 @@ const styles = StyleSheet.create({
     shadowColor: styleConstants.color.black,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
-    elevation: 2,
+    elevation: 2
   }
 })
 

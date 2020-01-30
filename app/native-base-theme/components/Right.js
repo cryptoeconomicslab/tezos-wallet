@@ -8,7 +8,7 @@ export default () => {
     flex: 1,
     alignSelf: 'center',
     alignItems: 'flex-end'
-  };
+  }
 
-  return rightTheme;
-};
+  return rightTheme
+}

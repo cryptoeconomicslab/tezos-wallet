@@ -1,10 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { 
-  Container,
-  connectStyle
-  } from 'native-base'
-import Constants from 'expo-constants';
+import { Container, connectStyle } from 'native-base'
+import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
@@ -27,13 +24,10 @@ class Main extends Component<Props> {
 
   render() {
     const { navigation } = this.props
-    
+
     return (
       <Container>
-        <RootHeader 
-          navigation={navigation}
-          title={'Tezos Plasma Wallet'} 
-        />
+        <RootHeader navigation={navigation} title={'Tezos Plasma Wallet'} />
         <Container style={styles.bg}>
           <WalletCard
             assets={require('../assets/card_public_chain.png')}
@@ -51,7 +45,7 @@ class Main extends Component<Props> {
           />
         </Container>
       </Container>
-    );
+    )
   }
 }
 

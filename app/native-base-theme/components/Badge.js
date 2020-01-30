@@ -1,7 +1,7 @@
 // @flow
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
   const badgeTheme = {
@@ -34,6 +34,6 @@ export default (variables /* : * */ = variable) => {
     justifyContent: variables.platform === PLATFORM.IOS ? 'center' : undefined,
     borderRadius: 13.5,
     height: 27
-  };
-  return badgeTheme;
-};
+  }
+  return badgeTheme
+}

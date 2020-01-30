@@ -1,17 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 import ImageButton from '../components/ImageButton'
 import Toastr from '../components/Toast'
 
-import { 
-  Container,
-  connectStyle,
-  Button,
-  Text
-   } from 'native-base';
-import Constants from 'expo-constants';
+import { Container, connectStyle, Button, Text } from 'native-base'
+import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 
 type Props = {
@@ -29,23 +24,20 @@ class PublicChainWallet extends Component<Props, State> {
   }
 
   onTransactionSuccess = () => {
-    Toastr.showToast('Success', 'success', 2000);
+    Toastr.showToast('Success', 'success', 2000)
   }
 
   depositForm = () => {
     const { navigation } = this.props
     navigation.navigate('DepositForm')
-  } 
+  }
 
   render() {
     const { navigation } = this.props
-    
+
     return (
       <Container>
-        <RootHeader
-          navigation={navigation}
-          title={'Public Chain'}
-        />
+        <RootHeader navigation={navigation} title={'Public Chain'} />
         <Container style={styles.bg}>
           <WalletCard
             assets={require('../assets/card_public_chain.png')}
@@ -55,15 +47,17 @@ class PublicChainWallet extends Component<Props, State> {
             action={this.rootchain}
           />
           <ImageButton
-            title='Deposit XTZ'
+            title="Deposit XTZ"
             action={this.depositForm}
             type={'deposit'}
           />
           {/* あとで消す */}
-          <Button onPress={this.onTransactionSuccess}><Text>toast</Text></Button>
+          <Button onPress={this.onTransactionSuccess}>
+            <Text>toast</Text>
+          </Button>
         </Container>
       </Container>
-    );
+    )
   }
 }
 

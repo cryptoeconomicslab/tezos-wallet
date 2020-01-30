@@ -1,12 +1,12 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-import variable from './../variables/platform';
-import { PLATFORM } from './../variables/commonColor';
+import variable from './../variables/platform'
+import { PLATFORM } from './../variables/commonColor'
 
 export default (variables /* : * */ = variable) => {
-  const platform = variables.platform;
+  const platform = variables.platform
   const transparentBtnCommon = {
     'NativeBase.Text': {
       fontSize: variables.DefaultFontSize - 3,
@@ -23,7 +23,7 @@ export default (variables /* : * */ = variable) => {
     },
     paddingVertical: null,
     paddingHorizontal: null
-  };
+  }
 
   const cardItemTheme = {
     'NativeBase.Left': {
@@ -192,7 +192,7 @@ export default (variables /* : * */ = variable) => {
     padding: variables.cardItemPadding + 5,
     paddingVertical: variables.cardItemPadding,
     backgroundColor: variables.cardDefaultBg
-  };
+  }
 
-  return cardItemTheme;
-};
+  return cardItemTheme
+}
