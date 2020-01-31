@@ -57,7 +57,7 @@ class TransferForm extends Component<Props, State> {
 
     Alert.alert(
       'Are you sure to transfer',
-      `${term} XTZ to ${address}`,
+      `${term} ꜩ to ${address}`,
       [
         {
           text: 'CANCEL',
@@ -91,7 +91,7 @@ class TransferForm extends Component<Props, State> {
                 <Text style={styles.text}>Balance</Text>
               </Left>
               <Right>
-                <Text style={styles.text}>{Number(12.5 - term)} &nbsp;XTZ</Text>
+                <Text style={styles.text}>{Number(12.5 - term)} &nbsp;ꜩ</Text>
               </Right>
             </CardItem>
           </Card>
@@ -100,7 +100,7 @@ class TransferForm extends Component<Props, State> {
             <Form style={styles.form}>
               <Label style={styles.formLabel}>Amount</Label>
               <Item inlineLabel last>
-                <Label style={styles.formLabel}>XTZ</Label>
+                <Label style={styles.formLabel}>ꜩ</Label>
                 <Input
                   keyboardType="numeric"
                   style={styles.inputValue}

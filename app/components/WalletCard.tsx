@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
-import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
+import {
+  StyleSheet,
+  ImageBackground,
+  TouchableHighlight,
+  Clipboard,
+  TouchableOpacity
+} from 'react-native'
+import Toastr from './Toast'
 import styleConstants from '../constants/styleConstants'
-import { Text, connectStyle } from 'native-base'
+import { Text, Icon, connectStyle } from 'native-base'
 
 type Props = {
   title: string
@@ -13,6 +20,13 @@ type Props = {
 }
 
 class WalletCard extends Component<Props> {
+
+  setCripbord = () => {
+    const { address } = this.props
+    Clipboard.setString(address)
+    Toastr.showToast('address copied!', 'info', 2000)
+  }
+
   render() {
     const { navigation, title, amount, address, assets, action } = this.props
 
@@ -21,7 +35,12 @@ class WalletCard extends Component<Props> {
         <ImageBackground source={assets} style={styles.card}>
           <Text style={styles.cardTitle}>{title}</Text>
           <Text style={styles.cardPoint}>{amount}</Text>
-          <Text style={styles.cardAddress}>{address}</Text>
+          <TouchableOpacity onPress={this.setCripbord}>
+            <Text style={styles.cardAddress}>
+              <Icon name="copy" style={styles.icon} />
+              &nbsp;{address}
+            </Text>
+          </TouchableOpacity>
         </ImageBackground>
       </TouchableHighlight>
     )
@@ -31,7 +50,7 @@ class WalletCard extends Component<Props> {
 const styles = StyleSheet.create({
   card: {
     margin: styleConstants.margin.small,
-    padding: styleConstants.margin.base,
+    padding: styleConstants.margin.small,
     width: 364,
     height: 200,
     alignSelf: 'center'
@@ -51,6 +70,13 @@ const styles = StyleSheet.create({
     fontSize: styleConstants.fontSize.base,
     textAlign: 'center',
     marginTop: styleConstants.margin.middle
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    color: styleConstants.color.textWhite,
+    margin: 8,
+    alignSelf: 'stretch'
   }
 })
 

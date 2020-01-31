@@ -73,13 +73,13 @@ class ChildchainWallet extends Component<Props> {
         <Container style={styles.bg}>
           <WalletCard
             assets={require('../assets/card_child_chain.png')}
-            title={'XTZ - child chain'}
+            title={'ꜩ - child chain'}
             amount={12.5}
-            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            address={'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f'}
             action={this.rootchain}
           />
           <ImageButton
-            title="Transfer XTZ"
+            title="Transfer ꜩ"
             action={this.transferForm}
             type={'transfer'}
           />
