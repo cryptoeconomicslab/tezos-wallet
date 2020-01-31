@@ -20,7 +20,6 @@ type Props = {
 }
 
 class WalletCard extends Component<Props> {
-
   setCripbord = () => {
     const { address } = this.props
     Clipboard.setString(address)
