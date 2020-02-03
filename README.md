@@ -21,7 +21,7 @@ $ npm run elf // eslint --fix
 
 prettier
 ```sh
-$npm run fmt // prettier
+$ npm run fmt // prettier
 
 ```
 
