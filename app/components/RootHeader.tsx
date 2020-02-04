@@ -24,6 +24,11 @@ class RootHeader extends Component<Props> {
     navigation.openDrawer()
   }
 
+  camera = () => {
+    const { navigation } = this.props
+    navigation.navigate('QRcode')
+  }
+
   render() {
     const { title } = this.props
 
@@ -37,7 +42,11 @@ class RootHeader extends Component<Props> {
         <Body>
           <Title style={styles.headerTitle}>{title}</Title>
         </Body>
-        <Right />
+        <Right>
+          <Button transparent onPress={this.camera}>
+            <Icon name="camera" />
+          </Button>
+        </Right>
       </Header>
     )
   }
