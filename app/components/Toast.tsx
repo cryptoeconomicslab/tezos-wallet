@@ -6,6 +6,8 @@ const typeSwitcher = (type: string) => {
   switch (type) {
     case 'success':
       return styles.success
+    case 'info':
+      return styles.info
     case 'warn':
       return styles.warn
     case 'error':
@@ -63,6 +65,17 @@ const styles = StyleSheet.create({
   },
   error: {
     backgroundColor: styleConstants.color.error,
+    bottom: 16,
+    borderRadius: 6,
+    width: '94%',
+    alignSelf: 'center',
+    shadowColor: styleConstants.color.black,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.4,
+    elevation: 2
+  },
+  info: {
+    backgroundColor: styleConstants.color.info,
     bottom: 16,
     borderRadius: 6,
     width: '94%',

@@ -1,6 +1,6 @@
 const imageButtonHandler = type => {
   switch (type) {
-    case 'receive':
+    case 'tracsaction':
       return {
         bg: require('../assets/button_bg_transaction.png'),
         icon: require('../assets/transaction_receive.png')
