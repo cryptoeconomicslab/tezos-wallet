@@ -1,40 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native';
-import * as Permissions from 'expo-permissions';
+import React from 'react'
+import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native'
+import * as Permissions from 'expo-permissions'
+import { BarCodeScanner } from 'expo-barcode-scanner'
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window')
 const qrSize = width * 0.7
 
-
 class QRcode extends React.Component {
-
   state = {
-    hasCameraPermission: null,
+    hasCameraPermission: null
   }
 
   async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await Permissions.askAsync(Permissions.CAMERA)
     this.setState({
       hasCameraPermission: status === 'granted'
-    });
+    })
   }
 
   cancelAlert() {
-    Alert.alert(
-      '読み取り終了しますか？'
-    )
+    const { navigation } = this.props
+    navigation.goBack()
+    // Alert.alert(
+    //   '読み取り終了しますか？'
+    // )
   }
 
   render() {
 
-    const { hasCameraPermission } = this.state;
+    const { hasCameraPermission } = this.state
 
     if(hasCameraPermission === null) {
-      return <Text>カメラにアクセスを許可しますか？</Text>
+      return <Text>Do you allow to access to camera?</Text>
     }
 
     if(hasCameraPermission === false) {
-      return <Text>カメラにアクセスできません</Text>
+      return <Text>Can not access to camera.</Text>
     }
 
     return (
@@ -43,7 +44,7 @@ class QRcode extends React.Component {
         style={[StyleSheet.absoluteFill, styles.container]}
       >
         <View style={styles.layerTop} >
-        <Text style={styles.description}>Scan QR code</Text>
+          <Text style={styles.description}>Scan QR code</Text>
 
         </View>
         <View style={styles.layerCenter}>
@@ -52,13 +53,12 @@ class QRcode extends React.Component {
           <View style={styles.layerRight} />
         </View>
         <View style={styles.layerBottom}>
-        <Text
-          onPress={() => this.cancelAlert()}
-          style={styles.cancel}
-        >
-        Cancel
-        </Text>
-
+          <Text
+            onPress={() => this.cancelAlert()}
+            style={styles.cancel}
+          >
+          Cancel
+          </Text>
         </View>
       </BarCodeScanner>
     );
@@ -70,7 +70,7 @@ class QRcode extends React.Component {
 
 }
 
-const opacity = 'rgba(0, 0, 0, .6)';
+const opacity = 'rgba(0, 0, 0, .6)'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
   layerCenter: {
     flex: 1,
     flexDirection: 'row',
-
   },
   layerLeft: {
     flex: 1,
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: '30%',
 
-  },
-});
+  }
+})
 
 export default QRcode
