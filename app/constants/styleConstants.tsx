@@ -8,6 +8,7 @@ const styleConstants = {
     textWhite: 'rgba(255, 255, 255 ,0.5)',
     primary: '#EC7182',
     secondary: '#71E5EC',
+    info: '#3498DB',
     error: '#CB0F5E',
     warn: 'rgba(203, 105, 15 ,0.7)'
   },
