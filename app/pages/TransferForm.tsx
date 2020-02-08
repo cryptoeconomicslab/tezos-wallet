@@ -7,7 +7,7 @@ import {
   Alert,
   View
 } from 'react-native'
-import StackHeader from '../components/StackHeader'
+import StackHeaderWithCamera from '../components/StackHeaderWithCamera'
 import {
   Container,
   Text,
@@ -79,7 +79,7 @@ class TransferForm extends Component<Props, State> {
     const { term } = this.state
     return (
       <Container>
-        <StackHeader title={'Deposit'} navigation={navigation} />
+        <StackHeaderWithCamera title={'Deposit'} navigation={navigation} />
         <Container style={styles.bg}>
           <Card transparent style={styles.card}>
             <CardItem style={styles.cardList}>
