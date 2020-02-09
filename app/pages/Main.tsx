@@ -6,6 +6,11 @@ import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 
+import { InMemoryKeyValueStore } from '@cryptoeconomicslab/level-kvs'
+import { Bytes } from '@cryptoeconomicslab/primitives'
+const tableName = Bytes('hoge')
+const kvs = new InMemoryKeyValueStore(tableName)
+
 type Props = {
   title: string
   navigation: any

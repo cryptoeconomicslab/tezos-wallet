@@ -11,6 +11,8 @@
     "fmt": "prettier --write **/*.{js,jsx,json,ts,tsx,md,html}"
   },
   "dependencies": {
+    "@cryptoeconomicslab/level-kvs": "0.0.4",
+    "@cryptoeconomicslab/primitives": "0.0.14",
     "@react-native-community/masked-view": "^0.1.5",
     "expo": "~36.0.0",
     "expo-barcode-scanner": "^8.0.0",
