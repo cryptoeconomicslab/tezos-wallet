@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "elc": "eslint **/*.{js,json,ts,tsx}",
-    "elf": "eslint --fix **/*.{js,json,ts,tsx}",
+    "elc": "eslint . --ext js,json,ts,tsx",
+    "elf": "eslint --fix . --ext js,json,ts,tsx",
     "fmt": "prettier --write **/*.{js,jsx,json,ts,tsx,md,html}"
   },
   "dependencies": {

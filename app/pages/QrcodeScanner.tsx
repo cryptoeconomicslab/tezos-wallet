@@ -38,7 +38,7 @@ class QrcodeScanner extends React.Component<State> {
     // )
   }
 
-  handleBarCodeScanned = (data) => {
+  handleBarCodeScanned = data => {
     const { scanned } = this.props
     // navigation.navigate("ChildchainWallet");
     this.setState({ scanned: true })
