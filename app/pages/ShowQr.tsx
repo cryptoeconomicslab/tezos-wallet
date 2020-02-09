@@ -1,9 +1,10 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, Clipboard } from 'react-native'
 import { Container, Text, Icon, Button, Left } from 'native-base'
 import qrcode from 'qrcode-generator'
 
 import StackHeader from '../components/StackHeader'
+import Toastr from '../components/Toast'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 
@@ -11,7 +12,8 @@ class ShowQr extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      size: null
+      size: null,
+      data: 'tz01u2ehbdiauh83easjfhads'
     }
     this.onLayout = this.onLayout.bind(this)
   }
@@ -23,11 +25,17 @@ class ShowQr extends React.Component {
     }
   }
 
+  setClipbord = () => {
+    const { data } = this.state
+    Clipboard.setString(data)
+    Toastr.showToast('address copied!', 'info', 2000)
+  }
+
   render() {
     const { cellSize, margin, navigation } = this.props
     const size = 280
 
-    const data = 'tz01u2ehbdiauh83easjfhads'
+    const { data } = this.state
     const typeNumber = 4
     const errorCorrectionLevel = 'L'
 
@@ -48,7 +56,7 @@ class ShowQr extends React.Component {
       <Container>
         <StackHeader navigation={navigation} title={'Child Chain Wallet'} />
         <Container style={styles.bg}>
-          <Button style={styles.labelButton}>
+          <Button style={styles.labelButton} onPress={this.setClipbord}>
             <Icon name="content-copy" type="MaterialCommunityIcons" />
             <Text uppercase={false}>{data}</Text>
           </Button>

@@ -30,7 +30,6 @@ class RootHeader extends Component<Props> {
   }
 
   showQr = () => {
-    console.log('hoge')
     const { navigation } = this.props
     navigation.navigate('ShowQr')
   }

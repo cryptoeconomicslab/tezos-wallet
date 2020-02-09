@@ -10,7 +10,6 @@ import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 
 const { width } = Dimensions.get('window')
-const qrSize = width * 0.7
 
 type State = {
   hasCameraPermission: string

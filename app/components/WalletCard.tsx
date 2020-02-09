@@ -20,7 +20,7 @@ type Props = {
 }
 
 class WalletCard extends Component<Props> {
-  setCripbord = () => {
+  setClipbord = () => {
     const { address } = this.props
     Clipboard.setString(address)
     Toastr.showToast('address copied!', 'info', 2000)
@@ -34,9 +34,13 @@ class WalletCard extends Component<Props> {
         <ImageBackground source={assets} style={styles.card}>
           <Text style={styles.cardTitle}>{title}</Text>
           <Text style={styles.cardPoint}>{amount}</Text>
-          <TouchableOpacity onPress={this.setCripbord}>
+          <TouchableOpacity onPress={this.setClipbord}>
             <Text style={styles.cardAddress}>
-              <Icon name="copy" style={styles.icon} />
+              <Icon
+                type="MaterialCommunityIcons"
+                name="content-copy"
+                style={styles.icon}
+              />
               &nbsp;{address}
             </Text>
           </TouchableOpacity>
