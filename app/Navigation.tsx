@@ -13,7 +13,7 @@ import PublicChainWallet from './pages/PublicChainWallet'
 import ChildchainWallet from './pages/ChildchainWallet'
 import DepositForm from './pages/DepositForm'
 import TransferForm from './pages/TransferForm'
-import Qrcode from './pages/Qrcode'
+import QrcodeScanner from './pages/QrcodeScanner'
 import ShowQr from './pages/ShowQr'
 
 const MainNavigation = createDrawerNavigator(
@@ -156,7 +156,7 @@ export const NestNavigation = createStackNavigator(
     DepositForm: { screen: DepositForm },
     TransferForm: { screen: TransferForm },
     ChildchainWallet: { screen: ChildchainWalletNavigation },
-    Qrcode: { screen: Qrcode },
+    QrcodeScanner: { screen: QrcodeScanner },
     ShowQr: { screen: ShowQr }
   },
   { initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none' }

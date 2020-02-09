@@ -26,7 +26,7 @@ class RootHeader extends Component<Props> {
 
   camera = () => {
     const { navigation } = this.props
-    navigation.navigate('Qrcode')
+    navigation.navigate('QrcodeScanner')
   }
 
   showQr = () => {

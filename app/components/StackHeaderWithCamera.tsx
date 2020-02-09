@@ -23,6 +23,11 @@ class StackHeaderWithCamera extends Component<Props> {
     navigation.goBack()
   }
 
+  Qrcode = () => {
+    const { navigation } = this.props
+    navigation.navigate('QrcodeScanner')
+  }
+
   render() {
     const { title } = this.props
 
@@ -37,7 +42,7 @@ class StackHeaderWithCamera extends Component<Props> {
           <Title style={styles.headerTitle}>{title}</Title>
         </Body>
         <Right>
-          <Button transparent onPress={console.log('qrcode')}>
+          <Button transparent onPress={this.Qrcode}>
             <Icon type="MaterialCommunityIcons" name="qrcode-scan" />
           </Button>
         </Right>

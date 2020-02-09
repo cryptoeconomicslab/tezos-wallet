@@ -17,7 +17,7 @@ type State = {
   scanned: boolean
 }
 
-class Qrcode extends React.Component<State> {
+class QrcodeScanner extends React.Component<State> {
   state = {
     hasCameraPermission: null,
     scanned: false
@@ -50,11 +50,11 @@ class Qrcode extends React.Component<State> {
     const { hasCameraPermission, scanned } = this.state
     const { navigation } = this.props
 
-    if(hasCameraPermission === null) {
+    if (hasCameraPermission === null) {
       return <Text>Do you allow to access to camera?</Text>
     }
 
-    if(hasCameraPermission === false) {
+    if (hasCameraPermission === false) {
       return <Text>Can not access to camera.</Text>
     }
 
@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Qrcode
+export default QrcodeScanner
