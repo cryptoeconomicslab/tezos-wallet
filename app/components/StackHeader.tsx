@@ -30,7 +30,7 @@ class StackHeader extends Component<Props> {
       <Header style={styles.header}>
         <Left>
           <Button transparent onPress={this.goBack}>
-            <Icon name="arrow-back" />
+            <Icon type="MaterialCommunityIcons" name="arrow-left" />
           </Button>
         </Left>
         <Body>

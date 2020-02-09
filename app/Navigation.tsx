@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createDrawerNavigator } from 'react-navigation-drawer'
-import { createReduxContainer } from 'react-navigation-redux-helpers';
+import { createReduxContainer } from 'react-navigation-redux-helpers'
 
 import Main from './pages/Main'
 import Modal from './pages/Modal'
@@ -13,28 +13,30 @@ import PublicChainWallet from './pages/PublicChainWallet'
 import ChildchainWallet from './pages/ChildchainWallet'
 import DepositForm from './pages/DepositForm'
 import TransferForm from './pages/TransferForm'
+import QrcodeScanner from './pages/QrcodeScanner'
+import ShowQr from './pages/ShowQr'
 
 const MainNavigation = createDrawerNavigator(
   {
-    Main: { 
+    Main: {
       screen: Main,
       navigationOptions: {
         title: 'Wallet list'
       }
     },
-    PublicChainWallet: { 
+    PublicChainWallet: {
       screen: PublicChainWallet,
       navigationOptions: {
         title: 'PublicChain'
       }
     },
-    ChildchainWallet: { 
+    ChildchainWallet: {
       screen: ChildchainWallet,
       navigationOptions: {
         title: 'Childchain'
       }
     },
-    ChallengeList: { 
+    ChallengeList: {
       screen: ChallengeList,
       navigationOptions: {
         title: 'Challenge list'
@@ -46,12 +48,12 @@ const MainNavigation = createDrawerNavigator(
         title: 'Network'
       }
     },
-    AddressList: { 
+    AddressList: {
       screen: AddressList,
       navigationOptions: {
         title: 'Address list'
       }
-    },
+    }
   },
   {
     initialRouteName: 'Main',
@@ -67,19 +69,19 @@ const MainNavigation = createDrawerNavigator(
 
 const PublicChainWalletNavigation = createDrawerNavigator(
   {
-    PublicChainWallet: { 
+    PublicChainWallet: {
       screen: PublicChainWallet,
       navigationOptions: {
         title: 'Publicchain'
       }
     },
-    ChildchainWallet: { 
+    ChildchainWallet: {
       screen: ChildchainWallet,
       navigationOptions: {
         title: 'Childchain'
       }
     },
-    ChallengeList: { 
+    ChallengeList: {
       screen: ChallengeList,
       navigationOptions: {
         title: 'Challenge list'
@@ -91,12 +93,12 @@ const PublicChainWalletNavigation = createDrawerNavigator(
         title: 'Network'
       }
     },
-    AddressList: { 
+    AddressList: {
       screen: AddressList,
       navigationOptions: {
         title: 'Address list'
       }
-    },
+    }
   },
   {
     initialRouteName: 'PublicChainWallet',
@@ -107,20 +109,20 @@ const PublicChainWalletNavigation = createDrawerNavigator(
 
 const ChildchainWalletNavigation = createDrawerNavigator(
   {
-    PublicChainWallet: { 
+    PublicChainWallet: {
       screen: PublicChainWallet,
       navigationOptions: {
         title: 'PublicChain',
-        textStyle: {color: '#FFF'}
+        textStyle: { color: '#FFF' }
       }
     },
-    ChildchainWallet: { 
+    ChildchainWallet: {
       screen: ChildchainWallet,
       navigationOptions: {
         title: 'ChildChain'
       }
     },
-    ChallengeList: { 
+    ChallengeList: {
       screen: ChallengeList,
       navigationOptions: {
         title: 'Challenge list'
@@ -132,12 +134,12 @@ const ChildchainWalletNavigation = createDrawerNavigator(
         title: 'Network'
       }
     },
-    AddressList: { 
+    AddressList: {
       screen: AddressList,
       navigationOptions: {
         title: 'Address list'
       }
-    },
+    }
   },
   {
     initialRouteName: 'ChildchainWallet',
@@ -153,16 +155,15 @@ export const NestNavigation = createStackNavigator(
     PublicChainWallet: { screen: PublicChainWalletNavigation },
     DepositForm: { screen: DepositForm },
     TransferForm: { screen: TransferForm },
-    ChildchainWallet: { screen: ChildchainWalletNavigation }
+    ChildchainWallet: { screen: ChildchainWalletNavigation },
+    QrcodeScanner: { screen: QrcodeScanner },
+    ShowQr: { screen: ShowQr }
   },
-  {initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none'},
-  
+  { initialRouteName: 'MainNavigation', mode: 'modal', headerMode: 'none' }
 )
 
-const AppContainer = createReduxContainer(NestNavigation);
+const AppContainer = createReduxContainer(NestNavigation)
 
-export const AppWithNavigationState = connect(
-  (state) => ({
-    state: state.nav
-  })
-  )(AppContainer);
+export const AppWithNavigationState = connect((state: { nav: any }) => ({
+  state: state.nav
+}))(AppContainer)

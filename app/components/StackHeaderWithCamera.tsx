@@ -11,27 +11,21 @@ import {
   connectStyle
 } from 'native-base'
 import Constants from 'expo-constants'
-import styleConstants from '../constants/styleConstants'
 
 type Props = {
   title: string
   navigation: any
 }
 
-class RootHeader extends Component<Props> {
-  menu = () => {
+class StackHeaderWithCamera extends Component<Props> {
+  goBack = () => {
     const { navigation } = this.props
-    navigation.openDrawer()
+    navigation.goBack()
   }
 
-  camera = () => {
+  Qrcode = () => {
     const { navigation } = this.props
     navigation.navigate('QrcodeScanner')
-  }
-
-  showQr = () => {
-    const { navigation } = this.props
-    navigation.navigate('ShowQr')
   }
 
   render() {
@@ -40,16 +34,16 @@ class RootHeader extends Component<Props> {
     return (
       <Header style={styles.header}>
         <Left>
-          <Button transparent onPress={this.menu}>
-            <Icon type="MaterialCommunityIcons" name="menu" />
+          <Button transparent onPress={this.goBack}>
+            <Icon type="MaterialCommunityIcons" name="arrow-left" />
           </Button>
         </Left>
         <Body>
           <Title style={styles.headerTitle}>{title}</Title>
         </Body>
         <Right>
-          <Button transparent onPress={this.showQr}>
-            <Icon type="MaterialCommunityIcons" name="qrcode" />
+          <Button transparent onPress={this.Qrcode}>
+            <Icon type="MaterialCommunityIcons" name="qrcode-scan" />
           </Button>
         </Right>
       </Header>
@@ -59,7 +53,7 @@ class RootHeader extends Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: styleConstants.color.primaryBlack,
+    backgroundColor: '#312934',
     top: Constants.statusBarHeight
   },
   headerTitle: {
@@ -68,4 +62,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(RootHeader)
+export default connectStyle('NativeBase', styles)(StackHeaderWithCamera)
