@@ -1,3 +1,4 @@
+import './shim'
 import React from 'react'
 import { StyleSheet, YellowBox } from 'react-native'
 import * as Font from 'expo-font'
