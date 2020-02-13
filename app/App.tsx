@@ -5,8 +5,11 @@ import { Ionicons } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
 import { Root } from 'native-base'
 import { Provider } from 'react-redux'
-import { store } from './redux/makeStore'
+import configureStore from './redux/makeStore'
 import { AppWithNavigationState } from './Navigation'
+
+const initialState = {}
+const store = configureStore(initialState)
 
 YellowBox.ignoreWarnings(['Warning: ...'])
 

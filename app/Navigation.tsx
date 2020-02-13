@@ -164,6 +164,6 @@ export const NestNavigation = createStackNavigator(
 
 const AppContainer = createReduxContainer(NestNavigation)
 
-export const AppWithNavigationState = connect((state: { nav: any }) => ({
+export const AppWithNavigationState = connect((state) => ({
   state: state.nav
 }))(AppContainer)
