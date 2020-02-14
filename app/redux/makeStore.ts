@@ -8,7 +8,6 @@ import logger from 'redux-logger'
 import reducer from './modules'
 import { NestNavigation } from '../Navigation'
 
-
 const navReducer = createNavigationReducer(NestNavigation)
 // const appReducer = combineReducers({
 //   nav: navReducer

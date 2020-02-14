@@ -1,9 +1,7 @@
 import { connect } from 'react-redux'
-import { checkClientInitialized } from '../store/appStatus'
+import { checkClientInitialized } from '../redux/modules/appStatus'
 import React, { useEffect } from 'react'
-import {
-  Text
-} from 'native-base'
+import { Text } from 'native-base'
 // import StartupModal from './StartupModal'
 
 const Initial = props => {
@@ -23,7 +21,7 @@ const Initial = props => {
 }
 
 const mapStateToProps = state => ({
-  appStatus: state.appStatus
+  appStatus: state.reducer.appStatus
 })
 
 const mapDispatchToProps = {

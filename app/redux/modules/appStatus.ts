@@ -70,6 +70,6 @@ export default reducer
 
 export const checkClientInitialized = () => {
   return async dispatch => {
-    dispatch(loadAppSuccess)
+    dispatch(loadAppSuccess())
   }
 }
