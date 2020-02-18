@@ -5,6 +5,12 @@ import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
+import { TzWalletFactory } from '@cryptoeconomicslab/tezos-wallet'
+
+let factory = new TzWalletFactory()
+let wallet = factory.fromPrivateKey(
+  'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB'
+)
 
 type Props = {
   title: string
