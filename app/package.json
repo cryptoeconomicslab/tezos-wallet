@@ -12,8 +12,8 @@
     "postinstall": "rn-nodeify --install assert,fs,crypto,dgram,process,path,console,stream,vm,buffer,randombytes,util,child_process,xmlhttprequest --hack"
   },
   "dependencies": {
-    "@cryptoeconomicslab/primitives": "0.0.14",
-    "@cryptoeconomicslab/tezos-wallet": "0.0.3",
+    "@cryptoeconomicslab/primitives": "0.0.27",
+    "@cryptoeconomicslab/tezos-wallet": "0.0.6",
     "@react-native-community/masked-view": "^0.1.5",
     "assert": "^1.5.0",
     "asyncstorage-down": "^4.2.0",

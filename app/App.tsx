@@ -1,4 +1,5 @@
 import './shim'
+import 'ethers/shims/xmlhttprequest'
 import React from 'react'
 import { StyleSheet, YellowBox } from 'react-native'
 import * as Font from 'expo-font'

@@ -6,7 +6,7 @@ import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 
-import conseiljs from 'conseiljs'
+//import conseiljs from 'conseiljs'
 import { TzWalletFactory } from '@cryptoeconomicslab/tezos-wallet'
 import { Bytes } from '@cryptoeconomicslab/primitives'
 
