@@ -9,15 +9,23 @@
     "elc": "eslint . --ext js,json,ts,tsx",
     "elf": "eslint --fix . --ext js,json,ts,tsx",
     "fmt": "prettier --write **/*.{js,jsx,json,ts,tsx,md,html}",
-    "postinstall": "rn-nodeify --install assert,fs,crypto,dgram,process,path,console,stream,vm,buffer,randombytes,util --hack"
+    "postinstall": "rn-nodeify --install assert,fs,crypto,dgram,process,path,console,stream,vm,buffer,randombytes,util,http,net,zlib --hack"
   },
   "dependencies": {
+    "@cryptoeconomicslab/context": "^0.0.27",
     "@cryptoeconomicslab/db": "0.0.31",
-    "@cryptoeconomicslab/level-kvs": "0.0.5",
+    "@cryptoeconomicslab/level-kvs": "^0.0.6",
     "@cryptoeconomicslab/plasma-aggregator": "0.0.29",
+    "@cryptoeconomicslab/plasma-light-client": "^0.0.27",
     "@cryptoeconomicslab/primitives": "0.0.14",
+    "@cryptoeconomicslab/tezos-coder": "^0.0.6",
+    "@cryptoeconomicslab/tezos-contract": "^0.0.6",
+    "@cryptoeconomicslab/tezos-wallet": "^0.0.6",
     "@react-native-community/masked-view": "^0.1.5",
+    "@tradle/react-native-http": "^2.0.1",
     "assert": "^1.5.0",
+    "asyncstorage-down": "^4.2.0",
+    "browserify-zlib": "^0.1.4",
     "buffer": "^4.9.2",
     "console-browserify": "^1.2.0",
     "expo": "~36.0.0",
@@ -40,6 +48,7 @@
     "react-native-safe-area-context": "^0.6.2",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-svg": "^11.0.1",
+    "react-native-tcp": "^3.3.2",
     "react-native-udp": "^2.7.0",
     "react-native-web": "~0.11.7",
     "react-native-webview": "^8.0.6",
@@ -84,7 +93,10 @@
     "_stream_passthrough": "readable-stream/passthrough",
     "dgram": "react-native-udp",
     "stream": "stream-browserify",
-    "vm": "vm-browserify"
+    "vm": "vm-browserify",
+    "http": "@tradle/react-native-http",
+    "net": "react-native-tcp",
+    "zlib": "browserify-zlib"
   },
   "browser": {
     "console": "console-browserify",
@@ -98,6 +110,9 @@
     "_stream_passthrough": "readable-stream/passthrough",
     "dgram": "react-native-udp",
     "stream": "stream-browserify",
-    "vm": "vm-browserify"
+    "vm": "vm-browserify",
+    "http": "@tradle/react-native-http",
+    "net": "react-native-tcp",
+    "zlib": "browserify-zlib"
   }
 }
