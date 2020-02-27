@@ -6,10 +6,13 @@ import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 
-import { InMemoryKeyValueStore } from '@cryptoeconomicslab/level-kvs'
+import { RangeDb } from '@cryptoeconomicslab/db'
 import { Bytes } from '@cryptoeconomicslab/primitives'
-const tableName = Bytes('hoge')
-const kvs = new InMemoryKeyValueStore(tableName)
+
+import { InMemoryKeyValueStore } from '@cryptoeconomicslab/level-kvs'
+const kvs = new InMemoryKeyValueStore(Bytes.fromString('plasma_aggregator'))
+
+// const stateManager = new StateManager(stateDb)
 
 type Props = {
   title: string
@@ -17,6 +20,11 @@ type Props = {
 }
 
 class Main extends Component<Props> {
+  async componentDidMount() {
+    const stateBucket = await kvs.bucket(Bytes.fromString('state_update'))
+    const stateDb = new RangeDb(stateBucket)
+  }
+
   rootchain = () => {
     const { navigation } = this.props
     navigation.navigate('PublicChainWallet')

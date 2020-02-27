@@ -12,7 +12,9 @@
     "postinstall": "rn-nodeify --install assert,fs,crypto,dgram,process,path,console,stream,vm,buffer,randombytes,util --hack"
   },
   "dependencies": {
+    "@cryptoeconomicslab/db": "0.0.31",
     "@cryptoeconomicslab/level-kvs": "0.0.5",
+    "@cryptoeconomicslab/plasma-aggregator": "0.0.29",
     "@cryptoeconomicslab/primitives": "0.0.14",
     "@react-native-community/masked-view": "^0.1.5",
     "assert": "^1.5.0",
