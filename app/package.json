@@ -78,7 +78,7 @@
   "private": true,
   "react-native": {
     "console": "console-browserify",
-    "crypto": "expo-crypto",
+    "crypto": "react-native-crypto",
     "path": "path-browserify",
     "fs": "react-native-level-fs",
     "_stream_transform": "readable-stream/transform",
