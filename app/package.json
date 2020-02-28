@@ -12,8 +12,8 @@
     "postinstall": "rn-nodeify --install assert,fs,dgram,process,path,console,stream,vm,buffer,util,crypto,child_process,xmlhttprequest --hack"
   },
   "dependencies": {
-    "@cryptoeconomicslab/primitives": "0.0.27",
-    "@cryptoeconomicslab/tezos-wallet": "0.0.6",
+    "@cryptoeconomicslab/primitives": "0.0.34",
+    "@cryptoeconomicslab/tezos-wallet": "0.0.8",
     "@react-native-community/masked-view": "^0.1.5",
     "assert": "^1.5.0",
     "asyncstorage-down": "^4.2.0",
@@ -78,7 +78,7 @@
   "private": true,
   "react-native": {
     "console": "console-browserify",
-    "crypto": "react-native-crypto",
+    "crypto": "expo-crypto",
     "path": "path-browserify",
     "fs": "react-native-level-fs",
     "_stream_transform": "readable-stream/transform",

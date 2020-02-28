@@ -19,13 +19,14 @@ import {
   ConseilOperator,
   TezosLanguageUtil
 } from 'conseiljs'
+
 import { TzWalletFactory } from '@cryptoeconomicslab/tezos-wallet'
 import { Bytes } from '@cryptoeconomicslab/primitives'
 
-// let factory = new TzWalletFactory()
-// let wallet = factory.fromPrivateKey(
-//   'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB'
-// )
+let factory = new TzWalletFactory()
+let wallet = factory.fromPrivateKey(
+  'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB'
+)
 
 type Props = {
   title: string
