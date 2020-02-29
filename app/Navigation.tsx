@@ -6,9 +6,9 @@ import { createReduxContainer } from 'react-navigation-redux-helpers'
 
 import Main from './pages/Main'
 import Modal from './pages/Modal'
-import NetworkSelect from './pages/NetworkSelect'
+// import NetworkSelect from './pages/NetworkSelect'
 import ChallengeList from './pages/ChallengeList'
-import AddressList from './pages/AddressList'
+// import AddressList from './pages/AddressList'
 import PublicChainWallet from './pages/PublicChainWallet'
 import ChildchainWallet from './pages/ChildchainWallet'
 import DepositForm from './pages/DepositForm'
@@ -42,18 +42,18 @@ const MainNavigation = createDrawerNavigator(
         title: 'Challenge list'
       }
     },
-    Network: {
-      screen: NetworkSelect,
-      navigationOptions: {
-        title: 'Network'
-      }
-    },
-    AddressList: {
-      screen: AddressList,
-      navigationOptions: {
-        title: 'Address list'
-      }
-    }
+    // Network: {
+    //   screen: NetworkSelect,
+    //   navigationOptions: {
+    //     title: 'Network'
+    //   }
+    // },
+    // AddressList: {
+    //   screen: AddressList,
+    //   navigationOptions: {
+    //     title: 'Address list'
+    //   }
+    // }
   },
   {
     initialRouteName: 'Main',
@@ -87,18 +87,18 @@ const PublicChainWalletNavigation = createDrawerNavigator(
         title: 'Challenge list'
       }
     },
-    Network: {
-      screen: NetworkSelect,
-      navigationOptions: {
-        title: 'Network'
-      }
-    },
-    AddressList: {
-      screen: AddressList,
-      navigationOptions: {
-        title: 'Address list'
-      }
-    }
+    // Network: {
+    //   screen: NetworkSelect,
+    //   navigationOptions: {
+    //     title: 'Network'
+    //   }
+    // },
+    // AddressList: {
+    //   screen: AddressList,
+    //   navigationOptions: {
+    //     title: 'Address list'
+    //   }
+    // }
   },
   {
     initialRouteName: 'PublicChainWallet',
@@ -128,18 +128,18 @@ const ChildchainWalletNavigation = createDrawerNavigator(
         title: 'Challenge list'
       }
     },
-    Network: {
-      screen: NetworkSelect,
-      navigationOptions: {
-        title: 'Network'
-      }
-    },
-    AddressList: {
-      screen: AddressList,
-      navigationOptions: {
-        title: 'Address list'
-      }
-    }
+    // Network: {
+    //   screen: NetworkSelect,
+    //   navigationOptions: {
+    //     title: 'Network'
+    //   }
+    // },
+    // AddressList: {
+    //   screen: AddressList,
+    //   navigationOptions: {
+    //     title: 'Address list'
+    //   }
+    // }
   },
   {
     initialRouteName: 'ChildchainWallet',

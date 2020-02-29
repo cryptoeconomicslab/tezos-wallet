@@ -3,6 +3,7 @@ import { checkClientInitialized } from '../redux/modules/appStatus'
 import React, { useEffect } from 'react'
 import { Text } from 'native-base'
 // import StartupModal from './StartupModal'
+import CreateWallet from '../pages/CreateWallet'
 
 const Initial = props => {
   useEffect(() => {
@@ -10,9 +11,10 @@ const Initial = props => {
   }, [])
 
   if (props.appStatus.status === 'INITIAL') {
-    return <Text>aaa</Text>
+    return <CreateWallet />
   } else if (props.appStatus.status === 'LOADED') {
-    return props.children
+    // return props.children
+    return <CreateWallet />
   } else if (props.appStatus.status === 'ERROR') {
     return <Text>{'props.appStatus.error.message'}</Text>
   } else {

@@ -1,3 +1,5 @@
+import { AsyncStorage } from 'react-native'
+
 // CONSTANTS
 export enum APP_STATUS {
   INITIAL = 'INITIAL',
@@ -43,7 +45,7 @@ export interface AppAction {
   payload?: any
 }
 
-const reducer = (state: State = initialState, action: AppAction): State => {
+const appStatusReducer = (state: State = initialState, action: AppAction): State => {
   switch (action.type) {
     case APP_ACTION_TYPES.LOAD_APP_START:
       return {
@@ -66,10 +68,16 @@ const reducer = (state: State = initialState, action: AppAction): State => {
   }
 }
 
-export default reducer
+export default appStatusReducer
 
 export const checkClientInitialized = () => {
   return async dispatch => {
-    dispatch(loadAppSuccess())
+    try {
+      await AsyncStorage.getItem('address')
+      await dispatch(loadAppSuccess())
+    } catch (error) {
+      await dispatch(loadAppFail(error))
+    }
+
   }
 }
