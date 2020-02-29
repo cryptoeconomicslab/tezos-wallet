@@ -21,7 +21,7 @@ type Props = {
   navigation: any
 }
 
-export default class ChallengeList extends Component<Props> {
+export class ChallengeList extends Component<Props> {
   render() {
     const { navigation } = this.props
 
