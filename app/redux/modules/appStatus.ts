@@ -10,12 +10,17 @@ export enum APP_STATUS {
 
 // Action types
 export enum APP_ACTION_TYPES {
+  LOAD_APP_INITIAL = 'LOAD_APP_INITIAL',
   LOAD_APP_START = 'LOAD_APP_START',
   LOAD_APP_SUCCESS = 'LOAD_APP_SUCCESS',
   LOAD_APP_FAIL = 'LOAD_APP_FAIL'
 }
 
 // Action creators
+export const loadAppInitial = () => ({
+  type: APP_ACTION_TYPES.LOAD_APP_INITIAL
+})
+
 export const loadAppStart = () => ({
   type: APP_ACTION_TYPES.LOAD_APP_START
 })
@@ -47,6 +52,11 @@ export interface AppAction {
 
 const appStatusReducer = (state: State = initialState, action: AppAction): State => {
   switch (action.type) {
+    case APP_ACTION_TYPES.LOAD_APP_INITIAL:
+      return {
+        ...state,
+        status: APP_STATUS.INITIAL
+      }
     case APP_ACTION_TYPES.LOAD_APP_START:
       return {
         ...state,
@@ -73,8 +83,12 @@ export default appStatusReducer
 export const checkClientInitialized = () => {
   return async dispatch => {
     try {
-      await AsyncStorage.getItem('address')
-      await dispatch(loadAppSuccess())
+      const address = await AsyncStorage.getItem('address')
+      if (!address) {
+        await dispatch(loadAppInitial())
+      } {
+        await dispatch(loadAppSuccess())
+      }
     } catch (error) {
       await dispatch(loadAppFail(error))
     }

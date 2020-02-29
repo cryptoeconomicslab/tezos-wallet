@@ -10,19 +10,19 @@ const Initial = props => {
     props.checkClientInitialized()
   }, [])
 
-  if (props.appStatus.status === 'INITIAL') {
+  if (props.appStatus.status === 'INITIAL' || !props.address.address) {
     return <CreateWallet />
   } else if (props.appStatus.status === 'LOADED') {
-    // return props.children
-    return <CreateWallet />
+    return props.children
   } else if (props.appStatus.status === 'ERROR') {
-    return <Text>{'props.appStatus.error.message'}</Text>
+    return <Text>{props.appStatus.error.message}</Text>
   } else {
     return <Text>loading...</Text>
   }
 }
 
 const mapStateToProps = state => ({
+  address: state.reducer.address,
   appStatus: state.reducer.appStatus
 })
 

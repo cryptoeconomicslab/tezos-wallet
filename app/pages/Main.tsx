@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
 import { Container, connectStyle } from 'native-base'
 import Constants from 'expo-constants'
@@ -80,7 +81,7 @@ class Main extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, address } = this.props
 
     return (
       <Container>
@@ -90,14 +91,14 @@ class Main extends Component<Props> {
             assets={require('../assets/card_public_chain.png')}
             title={'ꜩ - public chain'}
             amount={12.5}
-            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            address={address.address}
             action={this.rootchain}
           />
           <WalletCard
             assets={require('../assets/card_child_chain.png')}
             title={'ꜩ - child chain'}
             amount={12.5}
-            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            address={address.address}
             action={this.childchain}
           />
         </Container>
@@ -117,4 +118,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(Main)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+})
+
+export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(Main))

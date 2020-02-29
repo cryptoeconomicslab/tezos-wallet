@@ -16,17 +16,19 @@ import {
   connectStyle
 } from 'native-base'
 import { setUserAddress } from '../redux/modules/address'
+import { checkClientInitialized } from '../redux/modules/appStatus'
 
 // type Props = {}
 
 class CreateWallet extends Component<Props> {
   setSecretAddress = async () => {
-    const { setUserAddress } = this.props
+    const { setUserAddress, checkClientInitialized } = this.props
     try {
       await AsyncStorage.setItem('secretKey', 'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB')
       await AsyncStorage.setItem('address', 'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f')
-      await Toastr.showToast('success', 'info', 2000)
       await setUserAddress(await AsyncStorage.getItem('address'))
+      await Toastr.showToast('success', 'info', 2000)
+      await checkClientInitialized()
     } catch (error) {
       Toastr.showToast(error, 'error', 2000)
       console.log(error)
@@ -70,11 +72,13 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  appStatus: state.reducer.address
+  address: state.reducer.address,
+  appStatus: state.reducer.appStatus,
 })
 
 const mapDispatchToProps = {
-  setUserAddress
+  setUserAddress,
+  checkClientInitialized
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(CreateWallet))
