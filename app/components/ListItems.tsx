@@ -1,4 +1,4 @@
-import React, { Component, forwardRef } from 'react'
+import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { ListItem, Text, Left, Right, Button, connectStyle } from 'native-base'
 import styleConstants from '../constants/styleConstants'
@@ -16,13 +16,12 @@ export type Props = {
   data: transactions
 }
 
-const ListItemMapping = forwardRef((props: Props, ref: any) => {
-  console.dir(ref)
+const ListItemMapping = (props: Props) => {
   return props.data.map(({ id, start, end, transactionId }) => {
     return (
       <ListItem noIndent style={styles.listItem} key={id}>
         <Left>
-          <Text ref={ref} style={styles.listLabel}>
+          <Text style={styles.listLabel}>
             {start} → {end}
           </Text>
         </Left>
@@ -34,7 +33,7 @@ const ListItemMapping = forwardRef((props: Props, ref: any) => {
       </ListItem>
     )
   })
-})
+}
 
 const styles = StyleSheet.create({
   listItem: {
