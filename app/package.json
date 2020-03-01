@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "elc": "eslint . --ext js,json,ts,tsx",
-    "elf": "eslint --fix . --ext js,json,ts,tsx",
+    "lint": "eslint . --ext js,json,ts,tsx",
+    "lint:fix": "eslint --fix . --ext js,json,ts,tsx",
     "fmt": "prettier --write **/*.{js,jsx,json,ts,tsx,md,html}",
     "postinstall": "rn-nodeify --install assert,fs,dgram,process,path,console,stream,vm,buffer,util,crypto,child_process,xmlhttprequest --hack"
   },

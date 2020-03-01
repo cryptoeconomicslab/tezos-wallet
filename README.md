@@ -2,37 +2,52 @@
 
 ## Development
 
-install package
-```sh
+### How to install
+
+```bash
 $ cd app/
-$ npm i 
+$ npm i
 ```
 
-start
-```sh
-$ npm start
+### How to run
+
+```bash
+$ npm run android
 ```
 
-eslint
-```sh
-$ npm run elc // eslint
-$ npm run elf // eslint --fix
+### eslint
+
+```bash
+$ npm run lint
+$ npm run lint:fix
 ```
 
-prettier
-```sh
-$ npm run fmt // prettier
+### prettier
 
+```bash
+$ npm run fmt
 ```
 
+### How to install emulator
 
-### emulator
-#### IOS
+#### iOS
 
-[Install xcode.](https://apps.apple.com/jp/app/xcode/id497799835)
-
+[Install Xcode](https://apps.apple.com/jp/app/xcode/id497799835)
 
 #### Android
-1. [Install Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQiAvc_xBRCYARIsAC5QT9kzcTZsyRADH_pNZHuisRabGUe7iC-yNIFGZqIRglURvyQ5ye4LhL0aAkLkEALw_wcB)
 
-2. [Android Virtual Device](https://qiita.com/ageage-hamsters/items/c5dd95c9f6dc87dac298)
+[Install Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQiAvc_xBRCYARIsAC5QT9kzcTZsyRADH_pNZHuisRabGUe7iC-yNIFGZqIRglURvyQ5ye4LhL0aAkLkEALw_wcB)
+
+## Roadmap
+
+- [ ] embed `wakkanay-tezos`
+- [ ] support React Native runtime (`wakkanay-tezos` / `wakkanay`)
+
+### Challenges
+
+#### support React Native runtime (`wakkanay-tezos` / `wakkanay`)
+
+How do we support React Native runtime
+
+- [wakkanay](https://github.com/cryptoeconomicslab/wakkanay)
+- [wakkanay-tezos](https://github.com/cryptoeconomicslab/wakkanay-tezos)
