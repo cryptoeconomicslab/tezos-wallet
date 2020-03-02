@@ -6,6 +6,7 @@ import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
+import { loadL1Wallet } from '../redux/modules/l1Wallet'
 
 // import {
 //   ConseilDataClient,
@@ -67,11 +68,12 @@ import WalletCard from '../components/WalletCard'
 type Props = {
   title: string
   navigation: any
+  loadL1Wallet: () => void
 }
 
 class Main extends Component<Props> {
   async componentDidMount() {
-
+    this.props.loadL1Wallet()
   }
 
   rootchain = () => {
@@ -85,7 +87,7 @@ class Main extends Component<Props> {
   }
 
   render() {
-    const { navigation, address } = this.props
+    const { navigation, address, l1Wallet } = this.props
 
     return (
       <Container>
@@ -94,7 +96,7 @@ class Main extends Component<Props> {
           <WalletCard
             assets={require('../assets/card_public_chain.png')}
             title={'ꜩ - public chain'}
-            amount={12.5}
+            amount={l1Wallet.balance}
             address={address.address}
             action={this.rootchain}
           />
@@ -124,6 +126,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   address: state.reducer.address,
+  l1Wallet: state.reducer.l1Wallet
 })
 
-export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(Main))
+const mapDispatchToProps = {
+  loadL1Wallet
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(Main))
+

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   StyleSheet,
   Image,
@@ -47,7 +48,6 @@ class DepositForm extends Component<Props, State> {
 
   onSubmit = () => {
     const { term } = this.state
-    console.log(term)
 
     Alert.alert(
       'Are you sure to deposit',
@@ -69,8 +69,10 @@ class DepositForm extends Component<Props, State> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, address, l1Wallet } = this.props
     const { term } = this.state
+
+    const currentBalance = Number(l1Wallet.balance - Number(term))
     return (
       <Container>
         <StackHeader title={'Deposit'} navigation={navigation} />
@@ -85,7 +87,7 @@ class DepositForm extends Component<Props, State> {
                 <Text style={styles.text}>Balance</Text>
               </Left>
               <Right>
-                <Text style={styles.text}>{Number(12.5 - term)} &nbsp;ꜩ</Text>
+                <Text style={styles.text}>{currentBalance} &nbsp;ꜩ</Text>
               </Right>
             </CardItem>
           </Card>
@@ -104,7 +106,7 @@ class DepositForm extends Component<Props, State> {
               </Item>
             </Form>
 
-            <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
+            <TouchableHighlight disabled={currentBalance < 0 ? true : false} onPress={this.onSubmit} style={styles.button}>
               <ImageBackground
                 source={require('../assets/button_bg_primary.png')}
                 style={styles.buttonImage}
@@ -176,4 +178,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(DepositForm)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+  l1Wallet: state.reducer.l1Wallet
+})
+
+export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(DepositForm))
+

@@ -11,6 +11,7 @@ import { Container, connectStyle, Button, Text } from 'native-base'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import { loadL1Wallet } from '../redux/modules/l1Wallet'
+import { AsyncStorage } from 'react-native'
 
 type Props = {
   navigation: any,
@@ -25,7 +26,9 @@ type State = {
 }
 
 class PublicChainWallet extends Component<Props, State> {
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    // await AsyncStorage.setItem('l1Balance', JSON.stringify(100))
+
     this.props.loadL1Wallet()
   }
 
