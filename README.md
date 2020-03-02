@@ -1,5 +1,7 @@
 # Tezos Wallet
 
+Tezos Plasma Wallet for Android developed with Plasma Chamber and React Native.
+
 ## Development
 
 ### How to install
@@ -30,10 +32,6 @@ $ npm run fmt
 
 ### How to install emulator
 
-#### iOS
-
-[Install Xcode](https://apps.apple.com/jp/app/xcode/id497799835)
-
 #### Android
 
 [Install Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQiAvc_xBRCYARIsAC5QT9kzcTZsyRADH_pNZHuisRabGUe7iC-yNIFGZqIRglURvyQ5ye4LhL0aAkLkEALw_wcB)
@@ -41,13 +39,12 @@ $ npm run fmt
 ## Roadmap
 
 - [ ] embed `wakkanay-tezos`
-- [ ] support React Native runtime (`wakkanay-tezos` / `wakkanay`)
 
-### Challenges
+## Issue of the libraries
 
-#### support React Native runtime (`wakkanay-tezos` / `wakkanay`)
+### support React Native runtime (`ConseilJS`)
 
-How do we support React Native runtime
+We have found that `libsodium-wrappers-sumo` doesn't work on the React Native.
+https://github.com/Cryptonomic/ConseilJS/blob/master/package.json#L77
 
-- [wakkanay](https://github.com/cryptoeconomicslab/wakkanay)
-- [wakkanay-tezos](https://github.com/cryptoeconomicslab/wakkanay-tezos)
+There's a possibility that the other libraries also don't work on it.
