@@ -83,10 +83,8 @@ export default appStatusReducer
 export const checkClientInitialized = () => {
   return async dispatch => {
     try {
-      const address = await AsyncStorage.getItem('address')
-      if (!address) {
-        await dispatch(loadAppInitial())
-      } {
+      const address = await AsyncStorage.getItem('myAddress')
+      if (address !== null) {
         await dispatch(loadAppSuccess())
       }
     } catch (error) {
