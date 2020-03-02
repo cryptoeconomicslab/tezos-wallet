@@ -24,10 +24,6 @@ class PublicChainWallet extends Component<Props, State> {
     navigation.navigate('PublicChainWallet')
   }
 
-  onTransactionSuccess = () => {
-    Toastr.showToast('Success', 'success', 2000)
-  }
-
   depositForm = () => {
     const { navigation } = this.props
     navigation.navigate('DepositForm')
@@ -54,10 +50,6 @@ class PublicChainWallet extends Component<Props, State> {
           />
           <TransactionLabel title="Deposit ꜩ" type={'tracsaction'} />
           <TransactionLabel title="Deposit ꜩ" type={'tracsaction'} />
-          {/* あとで消す */}
-          <Button onPress={this.onTransactionSuccess}>
-            <Text>toast</Text>
-          </Button>
         </Container>
       </Container>
     )

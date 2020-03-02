@@ -7,8 +7,12 @@ import { Ionicons } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
 import { Root } from 'native-base'
 import { Provider } from 'react-redux'
-import { store } from './redux/makeStore'
+import configureStore from './redux/makeStore'
 import { AppWithNavigationState } from './Navigation'
+import Initial from './components/Initial'
+
+const initialState = {}
+const store = configureStore(initialState)
 
 YellowBox.ignoreWarnings(['Warning: ...'])
 
@@ -50,7 +54,9 @@ export default class App extends React.Component<AppState> {
     return (
       <Provider store={store}>
         <Root>
-          <AppWithNavigationState />
+          <Initial>
+            <AppWithNavigationState />
+          </Initial>
         </Root>
       </Provider>
     )

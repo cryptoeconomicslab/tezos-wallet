@@ -104,13 +104,6 @@ class DepositForm extends Component<Props, State> {
               </Item>
             </Form>
 
-            {/* <Text 
-            numberOfLines={1} 
-            style={{color: '#FFFFFF'}}
-          >_________________________________________________
-          </Text>
-           */}
-
             <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
               <ImageBackground
                 source={require('../assets/button_bg_primary.png')}

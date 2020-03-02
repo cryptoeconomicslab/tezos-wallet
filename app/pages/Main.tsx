@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
 import { Container, connectStyle } from 'native-base'
 import Constants from 'expo-constants'
@@ -6,14 +7,55 @@ import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
 
-import {
-  ConseilDataClient,
-  ConseilFunction,
-  ConseilQueryBuilder,
-  ConseilOperator,
-  TezosLanguageUtil
-} from 'conseiljs'
+// import {
+//   ConseilDataClient,
+//   ConseilFunction,
+//   ConseilQueryBuilder,
+//   ConseilOperator,
+//   TezosLanguageUtil
+// } from 'conseiljs'
 
+// const amount = async () => {
+//   const platform = 'tezos'
+//   const network = 'babylonnet'
+//   const entity = 'accounts'
+
+//   const address = 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5'
+//   const conseilServer = {
+//     url: 'https://conseil-dev.cryptonomic-infra.tech',
+//     apiKey: 'BUIDLonTezos-001',
+//     network: network
+//   }
+
+//   let accountQuery = ConseilQueryBuilder.blankQuery()
+//   accountQuery = ConseilQueryBuilder.addFields(
+//     accountQuery,
+//     'account_id',
+//     'balance'
+//   )
+//   accountQuery = ConseilQueryBuilder.addPredicate(
+//     accountQuery,
+//     'account_id',
+//     ConseilOperator.EQ,
+//     [address]
+//   )
+//   accountQuery = ConseilQueryBuilder.addAggregationFunction(
+//     accountQuery,
+//     'balance',
+//     ConseilFunction.sum
+//   )
+//   accountQuery = ConseilQueryBuilder.setLimit(accountQuery, 1)
+
+//   const result = await ConseilDataClient.executeEntityQuery(
+//     conseilServer,
+//     platform,
+//     network,
+//     entity,
+//     accountQuery
+//   )
+//   console.log(result[0].sum_balance)
+// }
+// amount()
 // import { TzWalletFactory } from '@cryptoeconomicslab/tezos-wallet'
 // import { Bytes } from '@cryptoeconomicslab/primitives'
 
@@ -29,44 +71,7 @@ type Props = {
 
 class Main extends Component<Props> {
   async componentDidMount() {
-    const platform = 'tezos'
-    const network = 'babylonnet'
-    const entity = 'accounts'
 
-    const address = 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5'
-    const conseilServer = {
-      url: 'https://conseil-dev.cryptonomic-infra.tech',
-      apiKey: 'BUIDLonTezos-001',
-      network: network
-    }
-
-    let accountQuery = ConseilQueryBuilder.blankQuery()
-    accountQuery = ConseilQueryBuilder.addFields(
-      accountQuery,
-      'account_id',
-      'balance'
-    )
-    accountQuery = ConseilQueryBuilder.addPredicate(
-      accountQuery,
-      'account_id',
-      ConseilOperator.EQ,
-      [address]
-    )
-    accountQuery = ConseilQueryBuilder.addAggregationFunction(
-      accountQuery,
-      'balance',
-      ConseilFunction.sum
-    )
-    accountQuery = ConseilQueryBuilder.setLimit(accountQuery, 1)
-
-    const result = await ConseilDataClient.executeEntityQuery(
-      conseilServer,
-      platform,
-      network,
-      entity,
-      accountQuery
-    )
-    console.log(result[0].sum_balance)
   }
 
   rootchain = () => {
@@ -80,7 +85,7 @@ class Main extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, address } = this.props
 
     return (
       <Container>
@@ -90,14 +95,14 @@ class Main extends Component<Props> {
             assets={require('../assets/card_public_chain.png')}
             title={'ꜩ - public chain'}
             amount={12.5}
-            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            address={address.address}
             action={this.rootchain}
           />
           <WalletCard
             assets={require('../assets/card_child_chain.png')}
             title={'ꜩ - child chain'}
             amount={12.5}
-            address={'0x627306090abab3a6e1400e9345bc60c78a8bef57'}
+            address={address.address}
             action={this.childchain}
           />
         </Container>
@@ -117,4 +122,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(Main)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+})
+
+export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(Main))
