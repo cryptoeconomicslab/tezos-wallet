@@ -28,7 +28,7 @@ export const increaseL2Balance = (value: Number) => ({
 })
 
 export const decreaseL2Balance = (value: Number) => ({
-  type: L2_WALLET.INCREASE_L2_BALANCE,
+  type: L2_WALLET.DECREASE_L2_BALANCE,
   payload: value
 })
 
@@ -98,8 +98,20 @@ export const depositToL2Wallet = (val: Number) => {
       await AsyncStorage.setItem('l2Balance', JSON.stringify(val))
       const l2Balance = await AsyncStorage.getItem('l2Balance')
       const value2 = await JSON.parse(l2Balance)
-      await console.log(value2)
       await dispatch(increaseL2Balance(Number(value2)))
+    } catch (error) {
+      await console.log(error)
+    }
+  }
+}
+
+export const l2Transfer = (val: Number) => {
+  return async dispatch => {
+    try {
+      const l2Balance = await AsyncStorage.getItem('l2Balance')
+      const value2 = await JSON.parse(l2Balance)
+      await AsyncStorage.setItem('l2Balance', JSON.stringify(Number(value2) - Number(val)))
+      await dispatch(decreaseL2Balance(Number(val)))
     } catch (error) {
       await console.log(error)
     }
