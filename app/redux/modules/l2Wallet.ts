@@ -2,28 +2,35 @@ import { AsyncStorage } from 'react-native'
 import { depositTz } from './l1Wallet'
 
 // Constants
-export interface DEPOSIT_TZ {
-  value: Number
-  to: String
-}
 
 // Action types
 export enum L2_WALLET {
   LOAD_L2_BALANCE = 'LOAD_L2_BALANCE',
   SET_L2_BALANCE = 'SET_L2_BALANCE',
+  INCREASE_L2_BALANCE = 'INCREASE_L2_BALANCE',
+  DECREASE_L2_BALANCE = 'DECREASE_L2_BALANCE',
   TRANSFER_L2 = 'TRANSFER_L2'
 }
 
 // Action creators
 export const loadL2Balance = () => ({
-  type: L2_WALLET.LOAD_L1_BALANCE
+  type: L2_WALLET.LOAD_L2_BALANCE
 })
 
 export const setL2Balance = (value: Number) => ({
-  type: L2_WALLET.SET_L1_BALANCE,
+  type: L2_WALLET.SET_L2_BALANCE,
   payload: value
 })
 
+export const increaseL2Balance = (value: Number) => ({
+  type: L2_WALLET.INCREASE_L2_BALANCE,
+  payload: value
+})
+
+export const decreaseL2Balance = (value: Number) => ({
+  type: L2_WALLET.INCREASE_L2_BALANCE,
+  payload: value
+})
 
 // Reducer
 export interface State {
@@ -46,6 +53,21 @@ const l2WalletReducer = (state: State = initialState, action: AppAction): State 
         ...state,
         balance: action.payload
       }
+    case L2_WALLET.SET_L2_BALANCE:
+      return {
+        ...state,
+        balance: action.payload
+      }
+    case L2_WALLET.INCREASE_L2_BALANCE:
+      return {
+        ...state,
+        balance: Number(state.balance) + Number(action.payload)
+      }
+    case L2_WALLET.DECREASE_L2_BALANCE:
+      return {
+        ...state,
+        balance: Number(state.balance) - Number(action.payload)
+      }
     default:
       return state
   }
@@ -59,17 +81,25 @@ export const loadL2Wallet = (value: Number) => {
     try {
       const l2Balance = await AsyncStorage.getItem('l2Balance')
       const value = await JSON.parse(l2Balance)
-      await dispatch(setL2Balance(value))
+      await dispatch(setL2Balance(Number(value)))
     } catch (error) {
       await console.log(error)
     }
   }
 }
 
-export const depositToL2Wallet = (depositArgs: DEPOSIT_TZ) => {
+export const depositToL2Wallet = (val: Number) => {
   return async dispatch => {
     try {
-      await dispatch(depositTz(depositArgs))
+      await dispatch(depositTz(val))
+      const l1Balance = await AsyncStorage.getItem('l1Balance')
+      const value = await JSON.parse(l1Balance)
+      await AsyncStorage.setItem('l1Balance', JSON.stringify(value - val))
+      await AsyncStorage.setItem('l2Balance', JSON.stringify(val))
+      const l2Balance = await AsyncStorage.getItem('l2Balance')
+      const value2 = await JSON.parse(l2Balance)
+      await console.log(value2)
+      await dispatch(increaseL2Balance(Number(value2)))
     } catch (error) {
       await console.log(error)
     }

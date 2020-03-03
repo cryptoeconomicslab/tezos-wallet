@@ -1,10 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
 // Constants
-export interface DEPOSIT_TZ {
-  value: Number
-  to: String
-}
 
 // Action types
 export enum L1_WALLET {

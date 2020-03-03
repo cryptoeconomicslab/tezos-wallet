@@ -25,6 +25,7 @@ import {
 } from 'native-base'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
+import { depositToL2Wallet } from '../redux/modules/l2Wallet'
 
 type Props = {
   navigation: any
@@ -49,7 +50,7 @@ class DepositForm extends Component<Props, State> {
 
   onSubmit = () => {
     const { term } = this.state
-    const { address } = this.props
+    const { address, depositToL2Wallet } = this.props
 
     Alert.alert(
       'Are you sure to deposit',
@@ -63,7 +64,7 @@ class DepositForm extends Component<Props, State> {
         {
           text: 'COMFIRM',
           style: 'default',
-          onPress: () => console.log('OK Pressed')
+          onPress: () => depositToL2Wallet(term)
         }
       ],
       { cancelable: true }
@@ -185,5 +186,9 @@ const mapStateToProps = state => ({
   l1Wallet: state.reducer.l1Wallet
 })
 
-export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(DepositForm))
+const mapDispatchToProps = {
+  depositToL2Wallet
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(DepositForm))
 

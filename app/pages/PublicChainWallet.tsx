@@ -27,8 +27,6 @@ type State = {
 
 class PublicChainWallet extends Component<Props, State> {
   componentDidMount = async () => {
-    // await AsyncStorage.setItem('l1Balance', JSON.stringify(100))
-
     this.props.loadL1Wallet()
   }
 
