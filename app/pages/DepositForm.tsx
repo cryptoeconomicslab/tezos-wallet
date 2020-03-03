@@ -28,6 +28,7 @@ import styleConstants from '../constants/styleConstants'
 
 type Props = {
   navigation: any
+  address: string
 }
 
 type State = {
@@ -48,6 +49,7 @@ class DepositForm extends Component<Props, State> {
 
   onSubmit = () => {
     const { term } = this.state
+    const { address } = this.props
 
     Alert.alert(
       'Are you sure to deposit',
@@ -69,7 +71,7 @@ class DepositForm extends Component<Props, State> {
   }
 
   render() {
-    const { navigation, address, l1Wallet } = this.props
+    const { navigation, l1Wallet } = this.props
     const { term } = this.state
 
     const currentBalance = Number(l1Wallet.balance - Number(term))
@@ -106,7 +108,7 @@ class DepositForm extends Component<Props, State> {
               </Item>
             </Form>
 
-            <TouchableHighlight disabled={currentBalance < 0 ? true : false} onPress={this.onSubmit} style={styles.button}>
+            <TouchableHighlight disabled={currentBalance < 0} onPress={this.onSubmit} style={styles.button}>
               <ImageBackground
                 source={require('../assets/button_bg_primary.png')}
                 style={styles.buttonImage}

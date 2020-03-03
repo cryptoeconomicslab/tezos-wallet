@@ -23,9 +23,9 @@ export const setL1Balance = (value: Number) => ({
   payload: value
 })
 
-export const depositTz = (depositArgs: DEPOSIT_TZ) => ({
+export const depositTz = (value: Number) => ({
   type: L1_WALLET.DEPOSIT_TZ,
-  payload: depositArgs
+  payload: value
 })
 
 
@@ -50,6 +50,11 @@ const l1WalletReducer = (state: State = initialState, action: AppAction): State 
         ...state,
         balance: action.payload
       }
+    case L1_WALLET.DEPOSIT_TZ:
+      return {
+        ...state,
+        balance: state.balance - action.payload
+      }
     default:
       return state
   }
@@ -61,20 +66,11 @@ export default l1WalletReducer
 export const loadL1Wallet = (value: Number) => {
   return async dispatch => {
     try {
-      await AsyncStorage.setItem('l1Balance', JSON.stringify(100))
+      // only first time for demo
+      // await AsyncStorage.setItem('l1Balance', JSON.stringify(100))
       const l1Balance = await AsyncStorage.getItem('l1Balance')
       const value = await JSON.parse(l1Balance)
       await dispatch(setL1Balance(value))
-    } catch (error) {
-      await console.log(error)
-    }
-  }
-}
-
-export const depositToL2Wallet = (depositArgs: DEPOSIT_TZ) => {
-  return async dispatch => {
-    try {
-      await dispatch(depositTz(depositArgs))
     } catch (error) {
       await console.log(error)
     }
