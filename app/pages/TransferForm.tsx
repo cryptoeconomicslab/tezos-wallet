@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native'
 import StackHeaderWithCamera from '../components/StackHeaderWithCamera'
+import Toastr from '../components/Toast'
 import {
   Container,
   Text,
@@ -62,7 +63,7 @@ class TransferForm extends Component<AppState> {
 
   onSubmit = () => {
     const { term, address } = this.state
-    const { l2Transfer } = this.props
+    const { l2Transfer, navigation } = this.props
 
     Alert.alert(
       'Are you sure to transfer',
@@ -76,7 +77,11 @@ class TransferForm extends Component<AppState> {
         {
           text: 'COMFIRM',
           style: 'default',
-          onPress: () => l2Transfer(term)
+          onPress: () => {
+            l2Transfer(term)
+            navigation.navigate('ChildchainWallet')
+            Toastr.showToast('success!', 'info', 2000)
+          }
         }
       ],
       { cancelable: true }

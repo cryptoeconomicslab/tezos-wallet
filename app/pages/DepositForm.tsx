@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native'
 import StackHeader from '../components/StackHeader'
+import Toastr from '../components/Toast'
 import {
   Container,
   Text,
@@ -50,7 +51,7 @@ class DepositForm extends Component<Props, State> {
 
   onSubmit = () => {
     const { term } = this.state
-    const { address, depositToL2Wallet } = this.props
+    const { address, depositToL2Wallet, navigation } = this.props
 
     Alert.alert(
       'Are you sure to deposit',
@@ -64,7 +65,11 @@ class DepositForm extends Component<Props, State> {
         {
           text: 'COMFIRM',
           style: 'default',
-          onPress: () => depositToL2Wallet(term)
+          onPress: () => {
+            depositToL2Wallet(term)
+            navigation.navigate('PublicChainWallet')
+            Toastr.showToast('success!', 'info', 2000)
+          }
         }
       ],
       { cancelable: true }
