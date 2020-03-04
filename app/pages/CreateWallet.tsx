@@ -26,6 +26,7 @@ class CreateWallet extends Component<Props> {
     try {
       await AsyncStorage.setItem('secretKey', 'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB')
       await AsyncStorage.setItem('myAddress', 'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f')
+      await AsyncStorage.setItem('l1Balance', '100')
       await setUserAddress(await AsyncStorage.getItem('myAddress'))
       await Toastr.showToast('success', 'info', 2000)
       await checkClientInitialized()
