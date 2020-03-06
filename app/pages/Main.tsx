@@ -6,72 +6,25 @@ import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
+import { loadL1Wallet } from '../redux/modules/l1Wallet'
+import { loadL2Wallet } from '../redux/modules/l2Wallet'
 
-// import {
-//   ConseilDataClient,
-//   ConseilFunction,
-//   ConseilQueryBuilder,
-//   ConseilOperator,
-//   TezosLanguageUtil
-// } from 'conseiljs'
-
-// const amount = async () => {
-//   const platform = 'tezos'
-//   const network = 'babylonnet'
-//   const entity = 'accounts'
-
-//   const address = 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5'
-//   const conseilServer = {
-//     url: 'https://conseil-dev.cryptonomic-infra.tech',
-//     apiKey: 'BUIDLonTezos-001',
-//     network: network
-//   }
-
-//   let accountQuery = ConseilQueryBuilder.blankQuery()
-//   accountQuery = ConseilQueryBuilder.addFields(
-//     accountQuery,
-//     'account_id',
-//     'balance'
-//   )
-//   accountQuery = ConseilQueryBuilder.addPredicate(
-//     accountQuery,
-//     'account_id',
-//     ConseilOperator.EQ,
-//     [address]
-//   )
-//   accountQuery = ConseilQueryBuilder.addAggregationFunction(
-//     accountQuery,
-//     'balance',
-//     ConseilFunction.sum
-//   )
-//   accountQuery = ConseilQueryBuilder.setLimit(accountQuery, 1)
-
-//   const result = await ConseilDataClient.executeEntityQuery(
-//     conseilServer,
-//     platform,
-//     network,
-//     entity,
-//     accountQuery
-//   )
-//   console.log(result[0].sum_balance)
-// }
-// amount()
-// import { TzWalletFactory } from '@cryptoeconomicslab/tezos-wallet'
-// import { Bytes } from '@cryptoeconomicslab/primitives'
-
-// let factory = new TzWalletFactory()
-// let wallet = factory.fromPrivateKey(
-//   'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB'
-// )
+import initialize from '../initialize'
+import { PRIVATE_KEY } from 'react-native-dotenv'
 
 type Props = {
   title: string
   navigation: any
+  loadL1Wallet: () => void
+  loadL2Wallet: () => void
 }
 
 class Main extends Component<Props> {
   async componentDidMount() {
 
+    initialize(PRIVATE_KEY)
+    this.props.loadL1Wallet()
+    this.props.loadL2Wallet()
   }
 
   rootchain = () => {
@@ -85,7 +38,7 @@ class Main extends Component<Props> {
   }
 
   render() {
-    const { navigation, address } = this.props
+    const { navigation, address, l1Wallet, l2Wallet } = this.props
 
     return (
       <Container>
@@ -94,14 +47,14 @@ class Main extends Component<Props> {
           <WalletCard
             assets={require('../assets/card_public_chain.png')}
             title={'ꜩ - public chain'}
-            amount={12.5}
+            amount={l1Wallet.balance}
             address={address.address}
             action={this.rootchain}
           />
           <WalletCard
             assets={require('../assets/card_child_chain.png')}
             title={'ꜩ - child chain'}
-            amount={12.5}
+            amount={l2Wallet.balance}
             address={address.address}
             action={this.childchain}
           />
@@ -124,6 +77,15 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   address: state.reducer.address,
+  l1Wallet: state.reducer.l1Wallet,
+  l2Wallet: state.reducer.l2Wallet
 })
 
-export default connect(mapStateToProps)(connectStyle('NativeBase', styles)(Main))
+const mapDispatchToProps = {
+  loadL1Wallet,
+  loadL2Wallet
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(Main))
+

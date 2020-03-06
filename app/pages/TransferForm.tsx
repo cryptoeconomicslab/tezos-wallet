@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   StyleSheet,
   Image,
@@ -8,6 +9,7 @@ import {
   View
 } from 'react-native'
 import StackHeaderWithCamera from '../components/StackHeaderWithCamera'
+import Toastr from '../components/Toast'
 import {
   Container,
   Text,
@@ -24,9 +26,15 @@ import {
 } from 'native-base'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
+import { l2Transfer } from '../redux/modules/l2Wallet'
 
 type Props = {
   navigation: any
+  address: string
+  l2Wallet: {
+    balance: number
+  }
+  l2Transfer: () => void
 }
 
 type State = {
@@ -34,7 +42,9 @@ type State = {
   address: string
 }
 
-class TransferForm extends Component<Props, State> {
+type AppState = State & Props
+
+class TransferForm extends Component<AppState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -53,7 +63,7 @@ class TransferForm extends Component<Props, State> {
 
   onSubmit = () => {
     const { term, address } = this.state
-    console.log(term)
+    const { l2Transfer, navigation } = this.props
 
     Alert.alert(
       'Are you sure to transfer',
@@ -67,7 +77,11 @@ class TransferForm extends Component<Props, State> {
         {
           text: 'COMFIRM',
           style: 'default',
-          onPress: () => console.log('OK Pressed')
+          onPress: () => {
+            l2Transfer(term)
+            navigation.navigate('ChildchainWallet')
+            Toastr.showToast('success!', 'info', 2000)
+          }
         }
       ],
       { cancelable: true }
@@ -75,8 +89,10 @@ class TransferForm extends Component<Props, State> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, l2Wallet } = this.props
     const { term } = this.state
+
+    const current_value = Number(l2Wallet.balance) - Number(term)
     return (
       <Container>
         <StackHeaderWithCamera title={'Deposit'} navigation={navigation} />
@@ -91,7 +107,7 @@ class TransferForm extends Component<Props, State> {
                 <Text style={styles.text}>Balance</Text>
               </Left>
               <Right>
-                <Text style={styles.text}>{Number(12.5 - term)} &nbsp;ꜩ</Text>
+                <Text style={styles.text}>{current_value} &nbsp;ꜩ</Text>
               </Right>
             </CardItem>
           </Card>
@@ -127,7 +143,11 @@ class TransferForm extends Component<Props, State> {
               </Item>
             </Form>
 
-            <TouchableHighlight onPress={this.onSubmit} style={styles.button}>
+            <TouchableHighlight
+              disabled={current_value < 0}
+              onPress={this.onSubmit}
+              style={styles.button}
+            >
               <ImageBackground
                 source={require('../assets/button_bg_primary.png')}
                 style={styles.buttonImage}
@@ -211,4 +231,13 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(TransferForm)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+  l2Wallet: state.reducer.l2Wallet
+})
+
+const mapDispatchToProps = {
+  l2Transfer
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(TransferForm))
