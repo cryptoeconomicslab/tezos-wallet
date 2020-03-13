@@ -28,7 +28,7 @@ type Props = {
 }
 
 class ChildchainWallet extends Component<Props> {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.loadL2Wallet()
   }
 

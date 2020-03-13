@@ -74,7 +74,7 @@ type Props = {
 }
 
 class Main extends Component<Props> {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.loadL1Wallet()
     this.props.loadL2Wallet()
   }

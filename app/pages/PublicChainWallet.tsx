@@ -26,7 +26,7 @@ type State = {
 }
 
 class PublicChainWallet extends Component<Props, State> {
-  componentDidMount = async () => {
+  componentDidMount() {
     this.props.loadL1Wallet()
   }
 
