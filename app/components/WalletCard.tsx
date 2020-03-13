@@ -35,7 +35,10 @@ class WalletCard extends Component<Props> {
         <ImageBackground source={assets} style={styles.card}>
           <Text style={styles.cardTitle}>{title}</Text>
           <Text style={styles.cardPoint}>{amount}</Text>
-          <TouchableOpacity onPress={this.setClipbord} style={styles.cardButton}>
+          <TouchableOpacity
+            onPress={this.setClipbord}
+            style={styles.cardButton}
+          >
             <Text style={styles.cardAddress}>
               <Icon
                 type="MaterialCommunityIcons"
@@ -71,12 +74,12 @@ const styles = StyleSheet.create({
   },
   cardButton: {
     marginTop: styleConstants.margin.middle,
-    marginLeft: 8,
+    marginLeft: 8
   },
   cardAddress: {
     fontSize: styleConstants.fontSize.base,
     color: styleConstants.color.textWhite,
-    textAlign: 'left',
+    textAlign: 'left'
   },
   icon: {
     fontSize: 20,

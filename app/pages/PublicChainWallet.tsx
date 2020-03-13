@@ -14,7 +14,7 @@ import { loadL1Wallet } from '../redux/modules/l1Wallet'
 import { AsyncStorage } from 'react-native'
 
 type Props = {
-  navigation: any,
+  navigation: any
   address: {
     address: string
   }
@@ -86,5 +86,7 @@ const mapDispatchToProps = {
   loadL1Wallet
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(PublicChainWallet))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(PublicChainWallet))

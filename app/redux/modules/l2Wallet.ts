@@ -47,7 +47,10 @@ export interface AppAction {
   payload?: any
 }
 
-const l2WalletReducer = (state: State = initialState, action: AppAction): State => {
+const l2WalletReducer = (
+  state: State = initialState,
+  action: AppAction
+): State => {
   switch (action.type) {
     case L2_WALLET.SET_L2_BALANCE:
       return {
@@ -111,7 +114,10 @@ export const l2Transfer = (val: BigNumber) => {
     try {
       const l2Balance = await AsyncStorage.getItem('l2Balance')
       const value2 = JSON.parse(l2Balance)
-      await AsyncStorage.setItem('l2Balance', JSON.stringify(Number(value2) - Number(val)))
+      await AsyncStorage.setItem(
+        'l2Balance',
+        JSON.stringify(Number(value2) - Number(val))
+      )
       await dispatch(decreaseL2Balance(Number(val)))
     } catch (error) {
       console.log(error)

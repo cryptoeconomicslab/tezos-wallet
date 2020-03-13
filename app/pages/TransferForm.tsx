@@ -240,4 +240,7 @@ const mapDispatchToProps = {
   l2Transfer
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(TransferForm))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(TransferForm))

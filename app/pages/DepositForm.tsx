@@ -114,7 +114,11 @@ class DepositForm extends Component<Props, State> {
               </Item>
             </Form>
 
-            <TouchableHighlight disabled={currentBalance < 0} onPress={this.onSubmit} style={styles.button}>
+            <TouchableHighlight
+              disabled={currentBalance < 0}
+              onPress={this.onSubmit}
+              style={styles.button}
+            >
               <ImageBackground
                 source={require('../assets/button_bg_primary.png')}
                 style={styles.buttonImage}
@@ -195,5 +199,7 @@ const mapDispatchToProps = {
   depositToL2Wallet
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(DepositForm))
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(DepositForm))

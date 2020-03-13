@@ -7,7 +7,7 @@ import { BigNumber } from '@cryptoeconomicslab/primitives'
 export enum L1_WALLET {
   LOAD_L1_BALANCE = 'LOAD_L1_BALANCE',
   SET_L1_BALANCE = 'SET_L1_BALANCE',
-  DEPOSIT_TZ = 'DEPOSIT_TZ',
+  DEPOSIT_TZ = 'DEPOSIT_TZ'
 }
 
 // Action creators
@@ -25,7 +25,6 @@ export const depositTz = (value: BigNumber) => ({
   payload: value
 })
 
-
 // Reducer
 export interface State {
   balance: BigNumber
@@ -40,7 +39,10 @@ export interface AppAction {
   payload?: any
 }
 
-const l1WalletReducer = (state: State = initialState, action: AppAction): State => {
+const l1WalletReducer = (
+  state: State = initialState,
+  action: AppAction
+): State => {
   switch (action.type) {
     case L1_WALLET.SET_L1_BALANCE:
       return {

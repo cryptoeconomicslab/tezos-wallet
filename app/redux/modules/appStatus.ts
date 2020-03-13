@@ -50,7 +50,10 @@ export interface AppAction {
   payload?: any
 }
 
-const appStatusReducer = (state: State = initialState, action: AppAction): State => {
+const appStatusReducer = (
+  state: State = initialState,
+  action: AppAction
+): State => {
   switch (action.type) {
     case APP_ACTION_TYPES.LOAD_APP_INITIAL:
       return {
@@ -90,6 +93,5 @@ export const checkClientInitialized = () => {
     } catch (error) {
       await dispatch(loadAppFail(error))
     }
-
   }
 }

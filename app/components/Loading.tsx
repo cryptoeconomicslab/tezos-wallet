@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   spinner: {
     position: 'absolute',
     top: '50%',
-    left: '50%',
+    left: '50%'
   }
 })
 

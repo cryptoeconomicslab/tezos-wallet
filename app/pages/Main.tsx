@@ -138,6 +138,7 @@ const mapDispatchToProps = {
   loadL2Wallet
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(Main))
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(Main))

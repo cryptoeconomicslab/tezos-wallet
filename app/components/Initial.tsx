@@ -18,7 +18,6 @@ const Initial = props => {
       }
     }
     fetchAddress()
-
   }, [])
 
   if (props.appStatus.status === 'INITIAL' && !props.address.address) {

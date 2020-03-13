@@ -6,9 +6,9 @@ import address, { State as AddressState } from './address'
 
 export interface AppState {
   reducer: {
-    appStatus: AppStatusState,
-    address: AddressState,
-    l1Wallet: l1WalletState,
+    appStatus: AppStatusState
+    address: AddressState
+    l1Wallet: l1WalletState
     l2Wallet: l2WalletState
   }
 }
