@@ -26,12 +26,13 @@ import {
 } from 'native-base'
 import styleConstants from '../constants/styleConstants'
 import { l2Transfer } from '../redux/modules/l2Wallet'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 type Props = {
   navigation: any
   address: string
   l2Wallet: {
-    balance: number
+    balance: BigNumber
   }
   l2Transfer: () => void
 }

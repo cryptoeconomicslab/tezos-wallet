@@ -9,10 +9,11 @@ import {
 import Toastr from './Toast'
 import styleConstants from '../constants/styleConstants'
 import { Text, Icon, connectStyle } from 'native-base'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 type Props = {
   title: string
-  amount: number
+  amount: BigNumber
   address: string
   navigation: any
   assets: () => void

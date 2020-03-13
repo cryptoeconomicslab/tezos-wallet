@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 // Constants
 
@@ -14,12 +15,12 @@ export const loadL1Balance = () => ({
   type: L1_WALLET.LOAD_L1_BALANCE
 })
 
-export const setL1Balance = (value: Number) => ({
+export const setL1Balance = (value: BigNumber) => ({
   type: L1_WALLET.SET_L1_BALANCE,
   payload: value
 })
 
-export const depositTz = (value: Number) => ({
+export const depositTz = (value: BigNumber) => ({
   type: L1_WALLET.DEPOSIT_TZ,
   payload: value
 })
@@ -27,7 +28,7 @@ export const depositTz = (value: Number) => ({
 
 // Reducer
 export interface State {
-  balance: Number
+  balance: BigNumber
 }
 
 const initialState: State = {
@@ -59,7 +60,7 @@ const l1WalletReducer = (state: State = initialState, action: AppAction): State 
 export default l1WalletReducer
 
 // need my address
-export const loadL1Wallet = (value: Number) => {
+export const loadL1Wallet = (value: BigNumber) => {
   return async dispatch => {
     try {
       // only first time for demo

@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import { depositTz } from './l1Wallet'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 // Constants
 
@@ -17,24 +18,24 @@ export const loadL2Balance = () => ({
   type: L2_WALLET.LOAD_L2_BALANCE
 })
 
-export const setL2Balance = (value: Number) => ({
+export const setL2Balance = (value: BigNumber) => ({
   type: L2_WALLET.SET_L2_BALANCE,
   payload: value
 })
 
-export const increaseL2Balance = (value: Number) => ({
+export const increaseL2Balance = (value: BigNumber) => ({
   type: L2_WALLET.INCREASE_L2_BALANCE,
   payload: value
 })
 
-export const decreaseL2Balance = (value: Number) => ({
+export const decreaseL2Balance = (value: BigNumber) => ({
   type: L2_WALLET.DECREASE_L2_BALANCE,
   payload: value
 })
 
 // Reducer
 export interface State {
-  balance: Number
+  balance: BigNumber
 }
 
 const initialState: State = {
@@ -76,7 +77,7 @@ const l2WalletReducer = (state: State = initialState, action: AppAction): State 
 export default l2WalletReducer
 
 // need my address
-export const loadL2Wallet = (value: Number) => {
+export const loadL2Wallet = (value: BigNumber) => {
   return async dispatch => {
     try {
       const l2Balance = await AsyncStorage.getItem('l2Balance')
@@ -88,7 +89,7 @@ export const loadL2Wallet = (value: Number) => {
   }
 }
 
-export const depositToL2Wallet = (val: Number) => {
+export const depositToL2Wallet = (val: BigNumber) => {
   return async dispatch => {
     try {
       await dispatch(depositTz(val))
@@ -105,7 +106,7 @@ export const depositToL2Wallet = (val: Number) => {
   }
 }
 
-export const l2Transfer = (val: Number) => {
+export const l2Transfer = (val: BigNumber) => {
   return async dispatch => {
     try {
       const l2Balance = await AsyncStorage.getItem('l2Balance')
