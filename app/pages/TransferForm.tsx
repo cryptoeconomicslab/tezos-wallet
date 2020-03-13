@@ -24,7 +24,6 @@ import {
   Left,
   connectStyle
 } from 'native-base'
-import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
 import { l2Transfer } from '../redux/modules/l2Wallet'
 
@@ -92,7 +91,7 @@ class TransferForm extends Component<AppState> {
     const { navigation, l2Wallet } = this.props
     const { term } = this.state
 
-    const current_value = Number(l2Wallet.balance) - Number(term)
+    const currentValue = Number(l2Wallet.balance) - Number(term)
     return (
       <Container>
         <StackHeaderWithCamera title={'Deposit'} navigation={navigation} />
@@ -107,7 +106,7 @@ class TransferForm extends Component<AppState> {
                 <Text style={styles.text}>Balance</Text>
               </Left>
               <Right>
-                <Text style={styles.text}>{current_value} &nbsp;ꜩ</Text>
+                <Text style={styles.text}>{currentValue} &nbsp;ꜩ</Text>
               </Right>
             </CardItem>
           </Card>
@@ -144,7 +143,7 @@ class TransferForm extends Component<AppState> {
             </Form>
 
             <TouchableHighlight
-              disabled={current_value < 0}
+              disabled={currentValue < 0}
               onPress={this.onSubmit}
               style={styles.button}
             >
