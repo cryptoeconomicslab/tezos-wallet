@@ -68,10 +68,10 @@ export const loadL1Wallet = (value: BigNumber) => {
       // only first time for demo
       // await AsyncStorage.setItem('l1Balance', JSON.stringify(100))
       const l1Balance = await AsyncStorage.getItem('l1Balance')
-      const value = await JSON.parse(l1Balance)
+      const value = JSON.parse(l1Balance)
       await dispatch(setL1Balance(value))
     } catch (error) {
-      await console.log(error)
+      console.log(error)
     }
   }
 }
