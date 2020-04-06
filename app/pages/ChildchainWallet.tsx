@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
@@ -6,6 +7,7 @@ import ImageButton from '../components/ImageButton'
 import ListItemMapping from '../components/ListItems'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
+import { loadL2Wallet } from '../redux/modules/l2Wallet'
 
 import {
   Container,
@@ -22,14 +24,12 @@ import {
 type Props = {
   title: string
   navigation: any
+  loadL2Wallet: () => void
 }
 
 class ChildchainWallet extends Component<Props> {
-  ref: React.RefObject<unknown>
-
-  constructor(props) {
-    super(props)
-    this.ref = createRef()
+  componentDidMount() {
+    this.props.loadL2Wallet()
   }
 
   transferForm = () => {
@@ -38,7 +38,7 @@ class ChildchainWallet extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, l2Wallet } = this.props
 
     const data = [
       {
@@ -74,7 +74,7 @@ class ChildchainWallet extends Component<Props> {
           <WalletCard
             assets={require('../assets/card_child_chain.png')}
             title={'ꜩ - child chain'}
-            amount={12.5}
+            amount={l2Wallet.balance}
             address={'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f'}
             action={this.rootchain}
           />
@@ -86,7 +86,7 @@ class ChildchainWallet extends Component<Props> {
           <Content>
             <Text style={styles.listLabel}>UTXO</Text>
             <List style={styles.listArea}>
-              <ListItemMapping data={data} ref={this.ref} />
+              <ListItemMapping data={data} />
             </List>
           </Content>
         </Container>
@@ -112,4 +112,16 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(ChildchainWallet)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+  l2Wallet: state.reducer.l2Wallet
+})
+
+const mapDispatchToProps = {
+  loadL2Wallet
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(ChildchainWallet))

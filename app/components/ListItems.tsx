@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { ListItem, Text, Left, Right, Button, connectStyle } from 'native-base'
 import styleConstants from '../constants/styleConstants'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 export type transaction = {
   id: string
-  start: number
-  end: number
+  start: BigNumber
+  end: BigNumber
   transaction_id: string
 }
 

@@ -41,7 +41,7 @@ const MainNavigation = createDrawerNavigator(
       navigationOptions: {
         title: 'Challenge list'
       }
-    },
+    }
     // Network: {
     //   screen: NetworkSelect,
     //   navigationOptions: {
@@ -86,7 +86,7 @@ const PublicChainWalletNavigation = createDrawerNavigator(
       navigationOptions: {
         title: 'Challenge list'
       }
-    },
+    }
     // Network: {
     //   screen: NetworkSelect,
     //   navigationOptions: {
@@ -127,7 +127,7 @@ const ChildchainWalletNavigation = createDrawerNavigator(
       navigationOptions: {
         title: 'Challenge list'
       }
-    },
+    }
     // Network: {
     //   screen: NetworkSelect,
     //   navigationOptions: {
@@ -164,6 +164,6 @@ export const NestNavigation = createStackNavigator(
 
 const AppContainer = createReduxContainer(NestNavigation)
 
-export const AppWithNavigationState = connect((state) => ({
+export const AppWithNavigationState = connect(state => ({
   state: state.nav
 }))(AppContainer)

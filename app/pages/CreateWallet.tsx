@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  StyleSheet,
-  ImageBackground,
-  AsyncStorage
-} from 'react-native'
+import { StyleSheet, ImageBackground, AsyncStorage } from 'react-native'
 import Toastr from '../components/Toast'
 import styleConstants from '../constants/styleConstants'
 import Constants from 'expo-constants'
-import {
-  Button,
-  Text,
-  Left,
-  Right,
-  connectStyle
-} from 'native-base'
+import { Button, Text, Left, Right, connectStyle } from 'native-base'
 import { setUserAddress } from '../redux/modules/address'
 import { checkClientInitialized } from '../redux/modules/appStatus'
 
@@ -24,8 +14,19 @@ class CreateWallet extends Component<Props> {
   setSecretAddress = async () => {
     const { setUserAddress, checkClientInitialized } = this.props
     try {
-      await AsyncStorage.setItem('secretKey', 'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB')
-      await AsyncStorage.setItem('myAddress', 'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f')
+      //
+      // @NOTE: This is for the mock
+      // ----
+      await AsyncStorage.setItem(
+        'secretKey',
+        'edskRpVqFG2FHo11aB9pzbnHBiPBWhNWdwtNyQSfEEhDf5jhFbAtNS41vg9as7LSYZv6rEbtJTwyyEg9cNDdcAkSr9Z7hfvquB'
+      )
+      await AsyncStorage.setItem(
+        'myAddress',
+        'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f'
+      )
+      // ----
+      await AsyncStorage.setItem('l1Balance', '100')
       await setUserAddress(await AsyncStorage.getItem('myAddress'))
       await Toastr.showToast('success', 'info', 2000)
       await checkClientInitialized()
@@ -39,7 +40,10 @@ class CreateWallet extends Component<Props> {
     const { navigation } = this.props
 
     return (
-      <ImageBackground source={require('../assets/splash.png')} style={styles.bg}>
+      <ImageBackground
+        source={require('../assets/splash.png')}
+        style={styles.bg}
+      >
         <Button style={styles.button} onPress={this.setSecretAddress}>
           <Left />
           <Text style={styles.buttonText}>Create Wallet</Text>
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   address: state.reducer.address,
-  appStatus: state.reducer.appStatus,
+  appStatus: state.reducer.appStatus
 })
 
 const mapDispatchToProps = {
@@ -81,4 +85,7 @@ const mapDispatchToProps = {
   checkClientInitialized
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectStyle('NativeBase', styles)(CreateWallet))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(CreateWallet))

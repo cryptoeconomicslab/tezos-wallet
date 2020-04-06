@@ -1,7 +1,7 @@
 // CONSTANTS
 // Action types
 export enum ADDRESS {
-  SET_USER_ADDRESS = 'SET_USER_ADDRESS',
+  SET_USER_ADDRESS = 'SET_USER_ADDRESS'
 }
 
 // Action creators
@@ -24,7 +24,10 @@ export interface AddressAction {
   payload?: any
 }
 
-const addressReducer = (state: State = initialState, action: AddressAction): State => {
+const addressReducer = (
+  state: State = initialState,
+  action: AddressAction
+): State => {
   switch (action.type) {
     case ADDRESS.SET_USER_ADDRESS:
       return {

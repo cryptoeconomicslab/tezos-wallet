@@ -9,10 +9,11 @@ import {
 import Toastr from './Toast'
 import styleConstants from '../constants/styleConstants'
 import { Text, Icon, connectStyle } from 'native-base'
+import { BigNumber } from '@cryptoeconomicslab/primitives'
 
 type Props = {
   title: string
-  amount: number
+  amount: BigNumber
   address: string
   navigation: any
   assets: () => void
@@ -34,14 +35,17 @@ class WalletCard extends Component<Props> {
         <ImageBackground source={assets} style={styles.card}>
           <Text style={styles.cardTitle}>{title}</Text>
           <Text style={styles.cardPoint}>{amount}</Text>
-          <TouchableOpacity onPress={this.setClipbord}>
+          <TouchableOpacity
+            onPress={this.setClipbord}
+            style={styles.cardButton}
+          >
             <Text style={styles.cardAddress}>
               <Icon
                 type="MaterialCommunityIcons"
                 name="content-copy"
                 style={styles.icon}
               />
-              &nbsp;{address}
+              &nbsp;&nbsp;&nbsp;&nbsp;{address}
             </Text>
           </TouchableOpacity>
         </ImageBackground>
@@ -68,17 +72,19 @@ const styles = StyleSheet.create({
     fontSize: 70,
     textAlign: 'right'
   },
+  cardButton: {
+    marginTop: styleConstants.margin.middle,
+    marginLeft: 8
+  },
   cardAddress: {
-    color: styleConstants.color.textWhite,
     fontSize: styleConstants.fontSize.base,
-    textAlign: 'center',
-    marginTop: styleConstants.margin.middle
+    color: styleConstants.color.textWhite,
+    textAlign: 'left'
   },
   icon: {
-    width: 24,
-    height: 24,
+    fontSize: 20,
     color: styleConstants.color.textWhite,
-    margin: 8,
+    margin: 4,
     alignSelf: 'stretch'
   }
 })

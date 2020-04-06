@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
 import RootHeader from '../components/RootHeader'
 import WalletCard from '../components/WalletCard'
@@ -9,9 +10,15 @@ import Toastr from '../components/Toast'
 import { Container, connectStyle, Button, Text } from 'native-base'
 import Constants from 'expo-constants'
 import styleConstants from '../constants/styleConstants'
+import { loadL1Wallet } from '../redux/modules/l1Wallet'
+import { AsyncStorage } from 'react-native'
 
 type Props = {
   navigation: any
+  address: {
+    address: string
+  }
+  loadL1Wallet: () => void
 }
 
 type State = {
@@ -19,6 +26,10 @@ type State = {
 }
 
 class PublicChainWallet extends Component<Props, State> {
+  componentDidMount() {
+    this.props.loadL1Wallet()
+  }
+
   rootchain = () => {
     const { navigation } = this.props
     navigation.navigate('PublicChainWallet')
@@ -30,7 +41,7 @@ class PublicChainWallet extends Component<Props, State> {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation, address, l1Wallet } = this.props
 
     return (
       <Container>
@@ -39,8 +50,8 @@ class PublicChainWallet extends Component<Props, State> {
           <WalletCard
             assets={require('../assets/card_public_chain.png')}
             title={'ꜩ - public chain'}
-            amount={12.5}
-            address={'tz1X3xW1EcS48RQXSdrDTF6xESm933eq251f'}
+            amount={l1Wallet.balance}
+            address={address.address}
             action={this.rootchain}
           />
           <ImageButton
@@ -66,4 +77,16 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connectStyle('NativeBase', styles)(PublicChainWallet)
+const mapStateToProps = state => ({
+  address: state.reducer.address,
+  l1Wallet: state.reducer.l1Wallet
+})
+
+const mapDispatchToProps = {
+  loadL1Wallet
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectStyle('NativeBase', styles)(PublicChainWallet))
